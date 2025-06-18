@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  Add Resources Here  -->
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <!--  Header 背景色  -->
+            <SolidColorBrush Color="#F5F5F6" x:Key="HeaderBgColor" />
+            <!--  侧边栏背景色  -->
+            <SolidColorBrush Color="#F5F5F6" x:Key="SidebarBgColor" />
+            <!--  侧边栏边框颜色  -->
+            <SolidColorBrush Color="#E4E5E6" x:Key="SidebarBorderColor" />
+            <!--  内容区域背景色  -->
+            <SolidColorBrush Color="White" x:Key="ContentBgColor" />
+            <!--  当前菜单项的背景色  -->
+            <SolidColorBrush Color="#DADADA" x:Key="SelectedMenuItemBgColor" />
+            <!--  主题切换按钮鼠标悬浮背景色  -->
+            <SolidColorBrush Color="#DDDDDE" x:Key="ThemeSwitchButtonHoverBgColor" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <AssemblyName>Avalonia.Dashboard.Template</AssemblyName>
+        <RootNamespace>Avalonia.Dashboard.Template</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**"/>
+    </ItemGroup>
+
+    <!--    下面这个配置是避免 AOT 发布时把一些必要的 DLL 给精简移除了-->
+    <!--    <ItemGroup>-->
+    <!--        <TrimmerRootAssembly Include="Avalonia.Themes.Fluent"/>-->
+    <!--    </ItemGroup>-->
+
+    <!--    AOT 编译后需要依赖的本地 DLL 库，注意修改为自己系统下面正确的路径，避免找不到文件-->
+    <!--    <ItemGroup>-->
+    <!--        <SkiaSharpNative Include="$(UserProfile)\.nuget\packages\skiasharp.nativeassets.win32\2.88.9\runtimes\win-x64\native\libSkiaSharp.dll"/>-->
+    <!--        <HarfBuzzSharpNative Include="$(UserProfile)\.nuget\packages\harfbuzzsharp.nativeassets.win32\8.3.1.1\runtimes\win-x64\native\libHarfBuzzSharp.dll"/>-->
+    <!--    </ItemGroup>-->
+
+    <!--    复制本地 DLL 库到 AOT 编译输出目录-->
+    <!--    <Target Name="CopyNativeLibs" AfterTargets="Publish">-->
+    <!--        <Copy SourceFiles="@(SkiaSharpNative)" DestinationFolder="$(PublishDir)\..\native\"/>-->
+    <!--        <Copy SourceFiles="@(HarfBuzzSharpNative)" DestinationFolder="$(PublishDir)\..\native\"/>-->
+    <!--    </Target>-->
+
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.3.1"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.3.1"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.1"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.1"/>
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.3.1">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1"/>
+        <PackageReference Include="HotAvalonia" Version="3.0.0" PrivateAssets="All" Publish="True"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0-preview.5.25277.114"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0-preview.5.25277.114"/>
+        <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.0.1"/>
+    </ItemGroup>
+</Project>
