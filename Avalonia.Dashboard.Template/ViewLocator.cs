@@ -1,7 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Avalonia.Dashboard.Template.ViewModels;
+using Avalonia.Dashboard.Abstractions.ViewModels;
+using Avalonia.Dashboard.Ui;
+using Avalonia.Dashboard.Ui.Views;
 
 namespace Avalonia.Dashboard.Template;
 
@@ -13,7 +15,9 @@ public class ViewLocator : IDataTemplate
             return new TextBlock { Text = "Null view-model:(" };
 
         var viewTypeName = param.GetType().FullName!.Replace("ViewModel", "View");
-        var viewType = Type.GetType(viewTypeName);
+        var assemblyFullName = typeof(MainWindow).Assembly.FullName;
+        var viewAssemblyQualifiedName = $"{viewTypeName}, {assemblyFullName}";
+        var viewType = Type.GetType(viewAssemblyQualifiedName);
         var notFound = new TextBlock { Text = "View not found for " + viewTypeName };
         if (viewType is null || ServiceLocator.GetRequiredService(viewType) is not Control view) return notFound;
 
@@ -22,6 +26,6 @@ public class ViewLocator : IDataTemplate
 
     public bool Match(object? data)
     {
-        return data is ViewModelBase;
+        return data is IViewModel;
     }
 }

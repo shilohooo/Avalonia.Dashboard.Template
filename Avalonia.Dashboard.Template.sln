@@ -2,6 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Dashboard.Template", "Avalonia.Dashboard.Template\Avalonia.Dashboard.Template.csproj", "{C35C2907-43E3-4C1B-8D1D-4DE1D003C59E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Dashboard.Abstractions", "Avalonia.Dashboard.Abstractions\Avalonia.Dashboard.Abstractions.csproj", "{B4718FCF-77A1-4CD1-AE35-D39F423340BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Dashboard.Domains", "Avalonia.Dashboard.Domains\Avalonia.Dashboard.Domains.csproj", "{077487DB-1EB7-49D7-BCD0-6682996C575D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Dashboard.Services", "Avalonia.Dashboard.Services\Avalonia.Dashboard.Services.csproj", "{4ED31070-8DDF-4B44-B6D3-CD5D4B83619B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Dashboard.Ui", "Avalonia.Dashboard.Ui\Avalonia.Dashboard.Ui.csproj", "{96531EDE-0AA2-4A75-A99B-5ADC26866FE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +20,21 @@ Global
 		{C35C2907-43E3-4C1B-8D1D-4DE1D003C59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C35C2907-43E3-4C1B-8D1D-4DE1D003C59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C35C2907-43E3-4C1B-8D1D-4DE1D003C59E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4718FCF-77A1-4CD1-AE35-D39F423340BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4718FCF-77A1-4CD1-AE35-D39F423340BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4718FCF-77A1-4CD1-AE35-D39F423340BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4718FCF-77A1-4CD1-AE35-D39F423340BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{077487DB-1EB7-49D7-BCD0-6682996C575D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{077487DB-1EB7-49D7-BCD0-6682996C575D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{077487DB-1EB7-49D7-BCD0-6682996C575D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{077487DB-1EB7-49D7-BCD0-6682996C575D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ED31070-8DDF-4B44-B6D3-CD5D4B83619B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ED31070-8DDF-4B44-B6D3-CD5D4B83619B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ED31070-8DDF-4B44-B6D3-CD5D4B83619B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ED31070-8DDF-4B44-B6D3-CD5D4B83619B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96531EDE-0AA2-4A75-A99B-5ADC26866FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96531EDE-0AA2-4A75-A99B-5ADC26866FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96531EDE-0AA2-4A75-A99B-5ADC26866FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96531EDE-0AA2-4A75-A99B-5ADC26866FE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

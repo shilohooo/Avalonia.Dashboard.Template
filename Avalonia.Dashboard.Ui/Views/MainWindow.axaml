@@ -1,0 +1,172 @@
+<Window
+    Background="Transparent"
+    BorderBrush="Transparent"
+    BorderThickness="0"
+    CanResize="True"
+    DragDrop.AllowDrop="True"
+    ExtendClientAreaChromeHints="NoChrome"
+    ExtendClientAreaTitleBarHeightHint="-1"
+    ExtendClientAreaToDecorationsHint="True"
+    Icon="/Assets/avalonia-logo.ico"
+    Padding="{Binding MainWindowPadding}"
+    SystemDecorations="Full"
+    Title="Avalonia.Dashboard.Template"
+    WindowStartupLocation="CenterScreen"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="Avalonia.Dashboard.Ui.Views.MainWindow"
+    x:DataType="viewModels:MainWindowViewModel"
+    x:Name="Window"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+
+    <!--  region 布局容器  -->
+    <Grid RowDefinitions="Auto, *">
+        <!--  顶部  -->
+        <controls:AppHeader Grid.Row="0" />
+
+        <!--  主布局  -->
+        <Grid ColumnDefinitions="Auto, *" Grid.Row="1">
+            <Border
+                Background="{DynamicResource SidebarBgColor}"
+                BorderBrush="{DynamicResource SidebarBorderColor}"
+                BorderThickness="0,0,1,0"
+                Grid.Column="0"
+                Padding="4">
+                <DockPanel LastChildFill="True">
+                    <!--  二级导航折叠按钮  -->
+                    <Button
+                        Background="Transparent"
+                        Command="{Binding ToggleSidebarCommand}"
+                        DockPanel.Dock="Top"
+                        HorizontalAlignment="Center">
+                        <Svg
+                            Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
+                            Height="24"
+                            Path="{Binding SidebarToggleButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
+                            Width="24" />
+                    </Button>
+
+                    <!--  底部工具栏  -->
+                    <Button
+                        Background="Transparent"
+                        DockPanel.Dock="Bottom"
+                        HorizontalAlignment="Center">
+                        <Button.Flyout>
+                            <MenuFlyout
+                                HorizontalOffset="0"
+                                ItemsSource=""
+                                Placement="Top">
+                                <MenuItem Header="系统主题">
+                                    <MenuItem
+                                        Command="{Binding ToggleThemeCommand}"
+                                        CommandParameter="{x:Static x:Boolean.FalseString}"
+                                        Header="亮色主题" />
+                                    <MenuItem
+                                        Command="{Binding ToggleThemeCommand}"
+                                        CommandParameter="{x:Static x:Boolean.TrueString}"
+                                        Header="深色主题" />
+                                </MenuItem>
+                                <MenuItem Header="语言">
+                                    <MenuItem Header="简体中文" />
+                                    <MenuItem Header="English" />
+                                </MenuItem>
+                                <MenuItem Header="-" />
+                                <MenuItem Command="{Binding ExitCommand}" Header="退出" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+
+                        <Svg
+                            Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
+                            Height="24"
+                            Path="{Binding SettingsButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
+                            Width="24" />
+                    </Button>
+
+                    <!--  侧边一级导航  -->
+                    <ItemsControl
+                        Background="Transparent"
+                        ItemsSource="{Binding Menus}"
+                        Margin="0,10,0,10"
+                        Padding="4">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button
+                                    Classes.active="{Binding IsActive}"
+                                    Command="{Binding $parent[Window].((viewModels:MainWindowViewModel)DataContext).NavigateCommand, FallbackValue=null}"
+                                    CommandParameter="{Binding}"
+                                    Margin="0,0,0,8"
+                                    Padding="16,4">
+                                    <Button.Styles>
+                                        <Style Selector="Button">
+                                            <Setter Property="Background" Value="Transparent" />
+                                        </Style>
+                                        <Style Selector="Button.active">
+                                            <Setter Property="Background" Value="{DynamicResource SelectedMenuItemBgColor}" />
+                                        </Style>
+                                    </Button.Styles>
+                                    <StackPanel>
+                                        <Svg
+                                            Css="{Binding $parent[Window].((viewModels:MainWindowViewModel)DataContext).IsDarkMode, Converter={StaticResource SvgColorConverter}, FallbackValue=path { fill: #FFFFFF }}"
+                                            Height="24"
+                                            Path="{Binding Icon, Converter={StaticResource SvgIconPathConverters}}"
+                                            Width="24" />
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            Margin="0,4,0,0"
+                                            Text="{Binding Title}" />
+                                    </StackPanel>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </DockPanel>
+            </Border>
+
+            <SplitView
+                CompactPaneLength="0"
+                DisplayMode="CompactInline"
+                Grid.Column="1"
+                IsPaneOpen="{Binding IsSidebarOpened}"
+                OpenPaneLength="200"
+                x:Name="LayoutSplitView">
+                <!--  region 侧边二级导航  -->
+                <SplitView.Pane>
+                    <Border
+                        Background="{DynamicResource SidebarBgColor}"
+                        BorderBrush="{DynamicResource SidebarBorderColor}"
+                        BorderThickness="0,0,1,0"
+                        Padding="8">
+                        <StackPanel Spacing="10">
+                            <TextBox Watermark="搜索菜单..." />
+                            <TextBlock Text="二级导航区域" />
+                        </StackPanel>
+                    </Border>
+                </SplitView.Pane>
+                <!--  endregion  -->
+
+                <!--  region 内容区域  -->
+                <Border Background="{DynamicResource ContentBgColor}" Padding="12">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <TransitioningContentControl Content="{Binding CurrentPage}" />
+                    </ScrollViewer>
+                </Border>
+                <!--  endregion  -->
+            </SplitView>
+        </Grid>
+    </Grid>
+    <!--  endregion  -->
+</Window>

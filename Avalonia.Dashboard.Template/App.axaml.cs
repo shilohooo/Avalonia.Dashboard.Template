@@ -1,8 +1,9 @@
 using System.Diagnostics;
 using System.Linq;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Dashboard.Template.ViewModels;
-using Avalonia.Dashboard.Template.Views;
+using Avalonia.Dashboard.Ui;
+using Avalonia.Dashboard.Ui.ViewModels;
+using Avalonia.Dashboard.Ui.Views;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 
