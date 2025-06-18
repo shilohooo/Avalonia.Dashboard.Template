@@ -10,22 +10,14 @@ namespace Avalonia.Dashboard.Template.ViewModels;
 /// <summary>
 ///     顶部控件的 view model
 /// </summary>
-public partial class AppHeaderViewModel : ViewModelBase, IRecipient<ThemeChangedMessage>,
+public partial class AppHeaderViewModel(IMainWindowService mainWindowService) : RecipientViewModelBase,
+    IRecipient<ThemeChangedMessage>,
     IRecipient<MainWindowStateChangedMessage>
 {
-    private readonly IMainWindowService _mainWindowService;
-
     [ObservableProperty] private bool _isDarkMode = true;
 
     [ObservableProperty] [NotifyPropertyChangedFor(nameof(MaximizeToggleButtonIcon))]
     private bool _isMaximized;
-
-    public AppHeaderViewModel(IMainWindowService mainWindowService)
-    {
-        _mainWindowService = mainWindowService;
-        WeakReferenceMessenger.Default.Register<ThemeChangedMessage>(this);
-        WeakReferenceMessenger.Default.Register<MainWindowStateChangedMessage>(this);
-    }
 
     /// <summary>
     ///     应用图标名称
@@ -63,19 +55,19 @@ public partial class AppHeaderViewModel : ViewModelBase, IRecipient<ThemeChanged
     [RelayCommand]
     private void Minimize()
     {
-        _mainWindowService.Minimize();
+        mainWindowService.Minimize();
     }
 
     [RelayCommand]
     private void Maximize()
     {
-        _mainWindowService.Maximize();
+        mainWindowService.Maximize();
     }
 
     [RelayCommand]
     private void Exit()
     {
-        _mainWindowService.Close();
+        mainWindowService.Close();
     }
 
     #endregion

@@ -12,7 +12,7 @@ namespace Avalonia.Dashboard.Template.ViewModels;
 /// <summary>
 ///     主窗口 vm
 /// </summary>
-public partial class MainWindowViewModel : ViewModelBase, IRecipient<ThemeChangedMessage>,
+public partial class MainWindowViewModel : RecipientViewModelBase, IRecipient<ThemeChangedMessage>,
     IRecipient<MainWindowStateChangedMessage>, IRecipient<CurrentPageChangedMessage>
 {
     private readonly IMainWindowService _mainWindowService;
@@ -55,9 +55,6 @@ public partial class MainWindowViewModel : ViewModelBase, IRecipient<ThemeChange
         _themeService = themeService;
 
         IsDarkMode = themeService.IsDarkMode;
-        WeakReferenceMessenger.Default.Register<ThemeChangedMessage>(this);
-        WeakReferenceMessenger.Default.Register<MainWindowStateChangedMessage>(this);
-        WeakReferenceMessenger.Default.Register<CurrentPageChangedMessage>(this);
         _navigationService.NavigateTo(typeof(HomeViewModel));
     }
 
