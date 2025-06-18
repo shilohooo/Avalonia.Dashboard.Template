@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Avalonia.Dashboard.Template.Services;
+namespace Avalonia.Dashboard.Template.Services.Ui;
 
 /// <summary>
 ///     导航服务

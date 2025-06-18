@@ -1,4 +1,4 @@
-﻿namespace Avalonia.Dashboard.Template.Services;
+﻿namespace Avalonia.Dashboard.Template.Services.Ui;
 
 /// <summary>
 /// </summary>

@@ -2,12 +2,12 @@
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.Messaging;
 
-namespace Avalonia.Dashboard.Template.Services.Impl;
+namespace Avalonia.Dashboard.Template.Services.Ui.Impl;
 
 /// <summary>
 ///     主题管理服务
 /// </summary>
-public class ThemeService : IThemeService
+public class ThemeService(IMessenger messenger) : IThemeService
 {
     /// <inheritdoc />
     public bool IsDarkMode { get; private set; } = true;
@@ -16,10 +16,10 @@ public class ThemeService : IThemeService
     public void ToggleTheme(bool isDarkMode)
     {
         IsDarkMode = isDarkMode;
-        WeakReferenceMessenger.Default.Send(new ThemeChangedMessage(IsDarkMode));
+        messenger.Send(new ThemeChangedMessage(IsDarkMode));
+
         if (Application.Current is null) return;
 
         Application.Current.RequestedThemeVariant = IsDarkMode ? ThemeVariant.Dark : ThemeVariant.Light;
-        WeakReferenceMessenger.Default.Send(new ThemeChangedMessage(IsDarkMode));
     }
 }

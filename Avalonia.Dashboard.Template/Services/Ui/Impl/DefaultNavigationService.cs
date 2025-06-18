@@ -5,17 +5,17 @@ using Avalonia.Dashboard.Template.ViewModels;
 using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Avalonia.Dashboard.Template.Services.Impl;
+namespace Avalonia.Dashboard.Template.Services.Ui.Impl;
 
 /// <summary>
 ///     导航服务的默认实现
 /// </summary>
-public class DefaultNavigationService : INavigationService
+public class DefaultNavigationService(IMessenger messenger) : INavigationService
 {
     /// <summary>
-    /// 当前页面对应的 view model
+    ///     当前页面对应的 view model
     /// </summary>
-    public ViewModelBase? CurrentPage { get; private set; }
+    private ViewModelBase? CurrentPage { get; set; }
 
     /// <inheritdoc />
     public void NavigateTo(Type vmType)
@@ -27,6 +27,6 @@ public class DefaultNavigationService : INavigationService
         }
 
         CurrentPage = ServiceLocator.Host.Services.GetRequiredService(vmType) as ViewModelBase;
-        WeakReferenceMessenger.Default.Send(new CurrentPageChangedMessage(CurrentPage));
+        messenger.Send(new CurrentPageChangedMessage(CurrentPage));
     }
 }

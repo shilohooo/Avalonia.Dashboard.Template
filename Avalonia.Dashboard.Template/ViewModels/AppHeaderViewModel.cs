@@ -1,6 +1,6 @@
 ﻿using Avalonia.Dashboard.Template.Constants;
 using Avalonia.Dashboard.Template.Messages;
-using Avalonia.Dashboard.Template.Services;
+using Avalonia.Dashboard.Template.Services.Ui;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;

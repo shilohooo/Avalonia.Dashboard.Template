@@ -1,8 +1,9 @@
 ﻿using System;
-using Avalonia.Dashboard.Template.Services;
-using Avalonia.Dashboard.Template.Services.Impl;
+using Avalonia.Dashboard.Template.Services.Ui;
+using Avalonia.Dashboard.Template.Services.Ui.Impl;
 using Avalonia.Dashboard.Template.ViewModels;
 using Avalonia.Dashboard.Template.Views;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Avalonia.Dashboard.Template.Extensions;
@@ -25,6 +26,7 @@ public static class ServiceCollectionExtenstion
             new Lazy<MainWindow>(provider.GetRequiredService<MainWindow>));
         serviceCollection.AddSingleton<INavigationService, DefaultNavigationService>();
         serviceCollection.AddSingleton<IThemeService, ThemeService>();
+        serviceCollection.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
     }
 
     /// <summary>
