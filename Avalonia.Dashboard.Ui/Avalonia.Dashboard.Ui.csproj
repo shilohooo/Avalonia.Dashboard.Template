@@ -8,18 +8,11 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.3.1"/>
-        <PackageReference Include="Avalonia.Desktop" Version="11.3.1"/>
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.1"/>
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.1"/>
-        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-        <PackageReference Include="Avalonia.Diagnostics" Version="11.3.1">
-            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
-            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
-        </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1"/>
-        <PackageReference Include="HotAvalonia" Version="3.0.0" PrivateAssets="All" Publish="True"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0-preview.5.25277.114"/>
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0-preview.5.25277.114"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0-preview.5.25277.114"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.0-preview.5.25277.114"/>
         <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.0.1"/>
     </ItemGroup>
 
