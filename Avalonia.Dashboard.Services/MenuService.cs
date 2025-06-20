@@ -7,7 +7,7 @@ namespace Avalonia.Dashboard.Services;
 /// <summary>
 ///     菜单服务实现
 /// </summary>
-public class MenuServices : IMenuService
+public class MenuService : IMenuService
 {
     /// <inheritdoc />
     public List<MenuItem> GetMenuItems()
