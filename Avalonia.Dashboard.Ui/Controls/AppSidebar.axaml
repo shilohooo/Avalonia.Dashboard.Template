@@ -14,92 +14,98 @@
         <vm:AppSidebarViewModel />
     </Design.DataContext>
 
-    <DockPanel LastChildFill="True">
-        <!--  Toggle button  -->
-        <Button
-            Background="Transparent"
-            Command="{Binding ToggleSidebarCommand}"
-            DockPanel.Dock="Top"
-            HorizontalAlignment="Center">
-            <Svg
-                Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
-                Height="24"
-                Path="{Binding SidebarToggleButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
-                Width="24" />
-        </Button>
+    <Border
+        Background="{DynamicResource SidebarBgColor}"
+        BorderBrush="{DynamicResource SidebarBorderColor}"
+        BorderThickness="0,0,1,0"
+        Padding="4">
+        <DockPanel LastChildFill="True">
+            <!--  Toggle button  -->
+            <Button
+                Background="Transparent"
+                Command="{Binding ToggleSidebarCommand}"
+                DockPanel.Dock="Top"
+                HorizontalAlignment="Center">
+                <Svg
+                    Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
+                    Height="24"
+                    Path="{Binding SidebarToggleButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
+                    Width="24" />
+            </Button>
 
-        <!--  Toolbar  -->
-        <Button
-            Background="Transparent"
-            DockPanel.Dock="Bottom"
-            HorizontalAlignment="Center">
-            <Button.Flyout>
-                <MenuFlyout
-                    HorizontalOffset="0"
-                    ItemsSource=""
-                    Placement="Top">
-                    <MenuItem Header="系统主题">
-                        <MenuItem
-                            Command="{Binding ToggleThemeCommand}"
-                            CommandParameter="{x:Static x:Boolean.FalseString}"
-                            Header="亮色主题" />
-                        <MenuItem
-                            Command="{Binding ToggleThemeCommand}"
-                            CommandParameter="{x:Static x:Boolean.TrueString}"
-                            Header="深色主题" />
-                    </MenuItem>
-                    <MenuItem Header="语言">
-                        <MenuItem Header="简体中文" />
-                        <MenuItem Header="English" />
-                    </MenuItem>
-                    <MenuItem Header="-" />
-                    <MenuItem Command="{Binding ExitCommand}" Header="退出" />
-                </MenuFlyout>
-            </Button.Flyout>
+            <!--  Toolbar  -->
+            <Button
+                Background="Transparent"
+                DockPanel.Dock="Bottom"
+                HorizontalAlignment="Center">
+                <Button.Flyout>
+                    <MenuFlyout
+                        HorizontalOffset="0"
+                        ItemsSource=""
+                        Placement="Top">
+                        <MenuItem Header="系统主题">
+                            <MenuItem
+                                Command="{Binding ToggleThemeCommand}"
+                                CommandParameter="{x:Static x:Boolean.FalseString}"
+                                Header="亮色主题" />
+                            <MenuItem
+                                Command="{Binding ToggleThemeCommand}"
+                                CommandParameter="{x:Static x:Boolean.TrueString}"
+                                Header="深色主题" />
+                        </MenuItem>
+                        <MenuItem Header="语言">
+                            <MenuItem Header="简体中文" />
+                            <MenuItem Header="English" />
+                        </MenuItem>
+                        <MenuItem Header="-" />
+                        <MenuItem Command="{Binding ExitCommand}" Header="退出" />
+                    </MenuFlyout>
+                </Button.Flyout>
 
-            <Svg
-                Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
-                Height="24"
-                Path="{Binding SettingsButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
-                Width="24" />
-        </Button>
+                <Svg
+                    Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
+                    Height="24"
+                    Path="{Binding SettingsButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
+                    Width="24" />
+            </Button>
 
-        <!--  Sidebar  -->
-        <ItemsControl
-            Background="Transparent"
-            ItemsSource="{Binding Menus}"
-            Margin="0,10,0,10"
-            Padding="4">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button
-                        Classes.active="{Binding IsActive}"
-                        Command="{Binding DataContext.NavigateCommand, ElementName=AppSidebarControl, FallbackValue=null}"
-                        CommandParameter="{Binding}"
-                        Margin="0,0,0,8"
-                        Padding="16,4">
-                        <Button.Styles>
-                            <Style Selector="Button">
-                                <Setter Property="Background" Value="Transparent" />
-                            </Style>
-                            <Style Selector="Button.active">
-                                <Setter Property="Background" Value="{DynamicResource SelectedMenuItemBgColor}" />
-                            </Style>
-                        </Button.Styles>
-                        <StackPanel>
-                            <Svg
-                                Css="{Binding DataContext.IsDarkMode, ElementName=AppSidebarControl, Converter={StaticResource SvgColorConverter}, FallbackValue=path { fill: #FFFFFF }}"
-                                Height="24"
-                                Path="{Binding Icon, Converter={StaticResource SvgIconPathConverters}}"
-                                Width="24" />
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                Margin="0,4,0,0"
-                                Text="{Binding Title}" />
-                        </StackPanel>
-                    </Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </DockPanel>
+            <!--  Sidebar  -->
+            <ItemsControl
+                Background="Transparent"
+                ItemsSource="{Binding Menus}"
+                Margin="0,10,0,10"
+                Padding="4">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button
+                            Classes.active="{Binding IsActive}"
+                            Command="{Binding DataContext.NavigateCommand, ElementName=AppSidebarControl, FallbackValue=null}"
+                            CommandParameter="{Binding}"
+                            Margin="0,0,0,8"
+                            Padding="16,4">
+                            <Button.Styles>
+                                <Style Selector="Button">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Style>
+                                <Style Selector="Button.active">
+                                    <Setter Property="Background" Value="{DynamicResource SelectedMenuItemBgColor}" />
+                                </Style>
+                            </Button.Styles>
+                            <StackPanel>
+                                <Svg
+                                    Css="{Binding DataContext.IsDarkMode, ElementName=AppSidebarControl, Converter={StaticResource SvgColorConverter}, FallbackValue=path { fill: #FFFFFF }}"
+                                    Height="24"
+                                    Path="{Binding Icon, Converter={StaticResource SvgIconPathConverters}}"
+                                    Width="24" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Margin="0,4,0,0"
+                                    Text="{Binding Title}" />
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </DockPanel>
+    </Border>
 </UserControl>

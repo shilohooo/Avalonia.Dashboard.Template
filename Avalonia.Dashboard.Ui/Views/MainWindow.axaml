@@ -33,22 +33,15 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <!--  region 布局容器  -->
+    <!--  Layout  -->
     <Grid RowDefinitions="Auto, *">
-        <!--  顶部  -->
+        <!--  Header  -->
         <controls:AppHeader Grid.Row="0" />
 
-        <!--  主布局  -->
+        <!--  MainLayout  -->
         <Grid ColumnDefinitions="Auto, *" Grid.Row="1">
             <!--  Sidebar  -->
-            <Border
-                Background="{DynamicResource SidebarBgColor}"
-                BorderBrush="{DynamicResource SidebarBorderColor}"
-                BorderThickness="0,0,1,0"
-                Grid.Column="0"
-                Padding="4">
-                <controls:AppSidebar />
-            </Border>
+            <controls:AppSidebar Grid.Column="0" />
 
             <SplitView
                 CompactPaneLength="0"
@@ -57,7 +50,7 @@
                 IsPaneOpen="{Binding IsSidebarOpened}"
                 OpenPaneLength="200"
                 x:Name="LayoutSplitView">
-                <!--  region 侧边二级导航  -->
+                <!--  region Sub Menu  -->
                 <SplitView.Pane>
                     <Border
                         Background="{DynamicResource SidebarBgColor}"
@@ -70,9 +63,8 @@
                         </StackPanel>
                     </Border>
                 </SplitView.Pane>
-                <!--  endregion  -->
 
-                <!--  region 内容区域  -->
+                <!--  region Page Content  -->
                 <Border Background="{DynamicResource ContentBgColor}" Padding="12">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <TransitioningContentControl Content="{Binding CurrentPage}" />
@@ -82,5 +74,4 @@
             </SplitView>
         </Grid>
     </Grid>
-    <!--  endregion  -->
 </Window>
