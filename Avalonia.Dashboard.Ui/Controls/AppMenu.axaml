@@ -1,0 +1,27 @@
+﻿<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="Avalonia.Dashboard.Ui.Controls.AppMenu"
+    x:DataType="vm:AppMenuViewModel"
+    x:Name="AppMenuControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.DataContext>
+        <vm:AppMenuViewModel />
+    </Design.DataContext>
+
+    <Border
+        Background="{DynamicResource SidebarBgColor}"
+        BorderBrush="{DynamicResource SidebarBorderColor}"
+        BorderThickness="0,0,1,0"
+        Padding="8">
+        <StackPanel Spacing="10">
+            <TextBox Watermark="搜索菜单..." />
+            <TextBlock Text="二级导航区域" />
+        </StackPanel>
+    </Border>
+</UserControl>

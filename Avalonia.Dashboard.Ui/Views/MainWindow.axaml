@@ -52,16 +52,7 @@
                 x:Name="LayoutSplitView">
                 <!--  region Sub Menu  -->
                 <SplitView.Pane>
-                    <Border
-                        Background="{DynamicResource SidebarBgColor}"
-                        BorderBrush="{DynamicResource SidebarBorderColor}"
-                        BorderThickness="0,0,1,0"
-                        Padding="8">
-                        <StackPanel Spacing="10">
-                            <TextBox Watermark="搜索菜单..." />
-                            <TextBlock Text="二级导航区域" />
-                        </StackPanel>
-                    </Border>
+                    <controls:AppMenu />
                 </SplitView.Pane>
 
                 <!--  region Page Content  -->
