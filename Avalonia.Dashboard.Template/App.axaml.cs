@@ -2,7 +2,6 @@ using System.Diagnostics;
 using System.Linq;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Dashboard.Ui;
-using Avalonia.Dashboard.Ui.ViewModels;
 using Avalonia.Dashboard.Ui.Views;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
@@ -26,8 +25,6 @@ public class App : Application
             DisableAvaloniaDataAnnotationValidation();
             Debug.WriteLine("Getting MainWindow");
             var mainWindow = ServiceLocator.GetRequiredService<MainWindow>();
-            mainWindow.DataContext = ServiceLocator.GetRequiredService<MainWindowViewModel>();
-            Debug.WriteLine("Got MainWindow");
             desktop.MainWindow = mainWindow;
         }
 

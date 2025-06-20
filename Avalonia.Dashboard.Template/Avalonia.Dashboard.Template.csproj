@@ -49,7 +49,6 @@
 
 
     <ItemGroup>
-        <ProjectReference Include="..\Avalonia.Dashboard.Abstractions\Avalonia.Dashboard.Abstractions.csproj"/>
         <ProjectReference Include="..\Avalonia.Dashboard.Services\Avalonia.Dashboard.Services.csproj"/>
         <ProjectReference Include="..\Avalonia.Dashboard.Ui\Avalonia.Dashboard.Ui.csproj"/>
     </ItemGroup>

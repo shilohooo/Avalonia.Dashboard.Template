@@ -1,19 +1,19 @@
 ﻿using System.Collections.Immutable;
 using System.Diagnostics;
+using Avalonia.Dashboard.Abstractions.Factories;
 using Avalonia.Dashboard.Abstractions.Services.Ui;
 using Avalonia.Dashboard.Abstractions.ViewModels;
 using Avalonia.Dashboard.Domains.Enums;
 using Avalonia.Dashboard.Ui.Messages;
 using Avalonia.Dashboard.Ui.ViewModels;
 using CommunityToolkit.Mvvm.Messaging;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Avalonia.Dashboard.Ui.Services.Ui;
 
 /// <summary>
 ///     导航服务的默认实现
 /// </summary>
-public class DefaultNavigationService(IMessenger messenger) : INavigationService
+public class DefaultNavigationService(IViewModelFactory viewModelFactory, IMessenger messenger) : INavigationService
 {
     private static readonly ImmutableDictionary<ViewName, Type> ViewMappings = ImmutableDictionary
         .Create<ViewName, Type>()
@@ -35,7 +35,7 @@ public class DefaultNavigationService(IMessenger messenger) : INavigationService
             return;
         }
 
-        CurrentPage = ServiceLocator.Host.Services.GetRequiredService(vmType) as IViewModel;
+        CurrentPage = viewModelFactory.Create(vmType);
         messenger.Send(new CurrentPageChangedMessage(CurrentPage));
     }
 }

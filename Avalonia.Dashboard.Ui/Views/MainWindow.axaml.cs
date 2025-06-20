@@ -1,15 +1,15 @@
-using System.Diagnostics;
 using Avalonia.Controls;
+using Avalonia.Dashboard.Ui.ViewModels;
 using Avalonia.Input;
 
 namespace Avalonia.Dashboard.Ui.Views;
 
 public partial class MainWindow : Window
 {
-    public MainWindow()
+    public MainWindow(MainWindowViewModel viewModel)
     {
-        Debug.WriteLine("主窗口构造");
         InitializeComponent();
+        DataContext = viewModel;
         PointerPressed += OnPointerPressed;
     }
 

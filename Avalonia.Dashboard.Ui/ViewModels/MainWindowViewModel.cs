@@ -16,10 +16,10 @@ namespace Avalonia.Dashboard.Ui.ViewModels;
 public partial class MainWindowViewModel : RecipientViewModelBase, IRecipient<ThemeChangedMessage>,
     IRecipient<MainWindowStateChangedMessage>, IRecipient<CurrentPageChangedMessage>
 {
-    private readonly IMainWindowService _mainWindowService;
-    private readonly IMenuService _menuService;
-    private readonly INavigationService _navigationService;
-    private readonly IThemeService _themeService;
+    private readonly IMainWindowService? _mainWindowService;
+    private readonly IMenuService? _menuService;
+    private readonly INavigationService? _navigationService;
+    private readonly IThemeService? _themeService;
 
     /// <summary>
     ///     当前选中的菜单项
@@ -46,23 +46,6 @@ public partial class MainWindowViewModel : RecipientViewModelBase, IRecipient<Th
     ///     侧边栏导航区域展开状态
     /// </summary>
     [ObservableProperty] private bool _isSidebarOpened = true;
-
-    #region Constructors
-
-    public MainWindowViewModel(IMainWindowService mainWindowService, INavigationService navigationService,
-        IThemeService themeService, IMenuService menuService)
-    {
-        _mainWindowService = mainWindowService;
-        _navigationService = navigationService;
-        _themeService = themeService;
-        _menuService = menuService;
-
-        IsDarkMode = _themeService.IsDarkMode;
-
-        InitMenus();
-    }
-
-    #endregion
 
     /// <summary>
     ///     主窗口内边距
@@ -108,7 +91,7 @@ public partial class MainWindowViewModel : RecipientViewModelBase, IRecipient<Th
     private void InitMenus()
     {
         const ViewName defaultActiveViewName = ViewName.Home;
-        var menuItems = _menuService.GetMenuItems().Select(item =>
+        var menuItems = _menuService?.GetMenuItems().Select(item =>
         {
             var menuItemViewModel = new MenuItemViewModel(item)
             {
@@ -116,16 +99,38 @@ public partial class MainWindowViewModel : RecipientViewModelBase, IRecipient<Th
             };
             return menuItemViewModel;
         }).ToList();
-        Menus = new ObservableCollection<MenuItemViewModel>(menuItems);
-        _navigationService.NavigateTo(defaultActiveViewName);
+        Menus = new ObservableCollection<MenuItemViewModel>(menuItems ?? []);
+        _navigationService?.NavigateTo(defaultActiveViewName);
     }
+
+    #region Constructors
+
+    public MainWindowViewModel()
+    {
+        // for design time only
+    }
+
+    public MainWindowViewModel(IMainWindowService mainWindowService, INavigationService navigationService,
+        IThemeService themeService, IMenuService menuService)
+    {
+        _mainWindowService = mainWindowService;
+        _navigationService = navigationService;
+        _themeService = themeService;
+        _menuService = menuService;
+
+        IsDarkMode = _themeService.IsDarkMode;
+
+        InitMenus();
+    }
+
+    #endregion
 
     #region Commands
 
     [RelayCommand]
     private void ToggleTheme(string value)
     {
-        _themeService.ToggleTheme(bool.Parse(value));
+        _themeService?.ToggleTheme(bool.Parse(value));
     }
 
     [RelayCommand]
@@ -150,13 +155,13 @@ public partial class MainWindowViewModel : RecipientViewModelBase, IRecipient<Th
             menuItemViewModel.IsActive = false;
         }
 
-        _navigationService.NavigateTo(clickMenu.ViewName);
+        _navigationService?.NavigateTo(clickMenu.ViewName);
     }
 
     [RelayCommand]
     private void Exit()
     {
-        _mainWindowService.Close();
+        _mainWindowService?.Close();
     }
 
     #endregion

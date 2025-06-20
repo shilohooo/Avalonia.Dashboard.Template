@@ -1,4 +1,6 @@
-﻿using Avalonia.Dashboard.Abstractions.Services.Ui;
+﻿using Avalonia.Dashboard.Abstractions.Factories;
+using Avalonia.Dashboard.Abstractions.Services.Ui;
+using Avalonia.Dashboard.Ui.Factories;
 using Avalonia.Dashboard.Ui.Services.Ui;
 using Avalonia.Dashboard.Ui.ViewModels;
 using Avalonia.Dashboard.Ui.Views;
@@ -26,6 +28,7 @@ public static class ServiceCollectionExtenstion
         serviceCollection.AddSingleton<INavigationService, DefaultNavigationService>();
         serviceCollection.AddSingleton<IThemeService, ThemeService>();
         serviceCollection.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
+        serviceCollection.AddSingleton<IViewModelFactory, DefaultViewModelFactory>();
     }
 
     /// <summary>
