@@ -54,7 +54,7 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
 
     #region Constructors
 
-    protected AppHeaderViewModel()
+    public AppHeaderViewModel()
     {
     }
 
