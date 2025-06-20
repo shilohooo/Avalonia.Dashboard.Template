@@ -34,8 +34,7 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
     /// <summary>
     ///     窗口最大化切换图标名称
     /// </summary>
-    public IconName MaximizeToggleButtonIcon =>
-        IsMaximized ? IconName.FullscreenExitRounded : IconName.FullscreenRounded;
+    public string MaximizeToggleButtonIcon => IsMaximized ? "FullscreenExitRounded" : "FullscreenRounded";
 
     /// <summary>
     ///     退出按钮图标名称

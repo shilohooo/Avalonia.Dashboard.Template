@@ -1,0 +1,42 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <TabControl>
+            <TabItem Header="Light">
+                <ThemeVariantScope RequestedThemeVariant="Light">
+                    <controls:SvgIcon IconName="Home" />
+                </ThemeVariantScope>
+            </TabItem>
+            <TabItem Header="Dark">
+                <ThemeVariantScope RequestedThemeVariant="Dark">
+                    <controls:SvgIcon IconName="Home" />
+                </ThemeVariantScope>
+            </TabItem>
+        </TabControl>
+    </Design.PreviewWith>
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <system:String x:Key="SvgIconCss">path { fill: #000000 }</system:String>
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Dark">
+            <system:String x:Key="SvgIconCss">path { fill: #ffffff }</system:String>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <ControlTheme TargetType="controls:SvgIcon" x:Key="{x:Type controls:SvgIcon}">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Svg
+                    Css="{DynamicResource SvgIconCss}"
+                    Height="{TemplateBinding IconHeight}"
+                    Path="{Binding IconName, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource SvgIconPathConverters}}"
+                    Width="{TemplateBinding IconWidth}" />
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

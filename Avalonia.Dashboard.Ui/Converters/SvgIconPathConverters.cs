@@ -14,7 +14,7 @@ public class SvgIconPathConverters : IValueConverter
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         Debug.WriteLine($"SvgIconPathConverters.Convert - {value}, {targetType}, {parameter}, {culture}");
-        var iconPath = value is not IconName icon ? null : $"/Assets/Icons/MaterialSymbols/{Enum.GetName(icon)}.svg";
+        var iconPath = value is not string iconName ? null : $"/Assets/Icons/MaterialSymbols/{iconName}.svg";
         Debug.WriteLine($"SvgIconPathConverters.Convert Result - {iconPath}");
         return iconPath;
     }

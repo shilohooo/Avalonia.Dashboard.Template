@@ -3,6 +3,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="Resources/Converters.axaml" />
 
+        <ResourceInclude Source="Themes/SvgIcon.axaml" />
         <ResourceInclude Source="Themes/Light.axaml" />
         <ResourceInclude Source="Themes/Dark.axaml" />
     </ResourceDictionary.MergedDictionaries>

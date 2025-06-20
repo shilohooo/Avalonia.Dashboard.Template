@@ -6,6 +6,7 @@
     x:DataType="vm:AppSidebarViewModel"
     x:Name="AppSidebarControl"
     xmlns="https://github.com/avaloniaui"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
@@ -26,10 +27,9 @@
                 Command="{Binding ToggleSidebarCommand}"
                 DockPanel.Dock="Top"
                 HorizontalAlignment="Center">
-                <Svg
-                    Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
+                <controls:SvgIcon
                     Height="24"
-                    Path="{Binding SidebarToggleButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
+                    IconName="MenuRounded"
                     Width="24" />
             </Button>
 
@@ -62,10 +62,9 @@
                     </MenuFlyout>
                 </Button.Flyout>
 
-                <Svg
-                    Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
+                <controls:SvgIcon
                     Height="24"
-                    Path="{Binding SettingsButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
+                    IconName="SettingsRounded"
                     Width="24" />
             </Button>
 
@@ -92,10 +91,9 @@
                                 </Style>
                             </Button.Styles>
                             <StackPanel>
-                                <Svg
-                                    Css="{Binding DataContext.IsDarkMode, ElementName=AppSidebarControl, Converter={StaticResource SvgColorConverter}, FallbackValue=path { fill: #FFFFFF }}"
+                                <controls:SvgIcon
                                     Height="24"
-                                    Path="{Binding Icon, Converter={StaticResource SvgIconPathConverters}}"
+                                    IconName="{Binding Icon}"
                                     Width="24" />
                                 <TextBlock
                                     HorizontalAlignment="Center"

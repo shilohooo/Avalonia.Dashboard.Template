@@ -22,7 +22,7 @@ public partial class MenuItemViewModel(MenuItem menu) : ViewModelBase
     /// <summary>
     ///     菜单图标
     /// </summary>
-    public IconName Icon { get; set; } = menu.Icon;
+    public string Icon { get; set; } = menu.Icon;
 
     /// <summary>
     ///     菜单对应的页面类型

@@ -5,6 +5,7 @@
     x:Class="Avalonia.Dashboard.Ui.Controls.AppHeader"
     x:DataType="vm:AppHeaderViewModel"
     xmlns="https://github.com/avaloniaui"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
@@ -26,12 +27,7 @@
                 Grid.Column="0"
                 Grid.Row="0"
                 VerticalAlignment="Center">
-                <Svg
-                    Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
-                    Height="24"
-                    Path="{Binding AppIcon, Converter={StaticResource SvgIconPathConverters}}"
-                    ToolTip.Tip="应用 LOGO"
-                    Width="24" />
+                <controls:SvgIcon IconName="ComputerRounded" />
             </StackPanel>
             <!--  应用名称  -->
             <TextBlock
@@ -50,24 +46,21 @@
                 Spacing="4"
                 VerticalAlignment="Center">
                 <Button Background="Transparent" Command="{Binding MinimizeCommand}">
-                    <Svg
-                        Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
+                    <controls:SvgIcon
                         Height="16"
-                        Path="{Binding MinimizeButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
+                        IconName="HorizontalRuleRounded"
                         Width="16" />
                 </Button>
                 <Button Background="Transparent" Command="{Binding MaximizeCommand}">
-                    <Svg
-                        Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
+                    <controls:SvgIcon
                         Height="16"
-                        Path="{Binding MaximizeToggleButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
+                        IconName="{Binding MaximizeToggleButtonIcon}"
                         Width="16" />
                 </Button>
                 <Button Background="Transparent" Command="{Binding ExitCommand}">
-                    <Svg
-                        Css="{Binding IsDarkMode, Converter={StaticResource SvgColorConverter}}"
+                    <controls:SvgIcon
                         Height="16"
-                        Path="{Binding ExitButtonIcon, Converter={StaticResource SvgIconPathConverters}}"
+                        IconName="CloseRounded"
                         Width="16" />
                 </Button>
             </StackPanel>
