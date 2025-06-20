@@ -1,6 +1,7 @@
 ﻿using Avalonia.Dashboard.Services.Extensions;
 using Avalonia.Dashboard.Ui;
 using Avalonia.Dashboard.Ui.Extensions;
+using Avalonia.Dashboard.Ui.ViewModels;
 using Microsoft.Extensions.Hosting;
 
 namespace Avalonia.Dashboard.Template.Extensions;
@@ -17,7 +18,8 @@ public static class CustomAppBuilderExtension
             {
                 services.AddServices();
 
-                services.AddViewModels();
+                services.AddViewModels<ViewModelBase>();
+                services.AddViewModels<RecipientViewModelBase>();
                 services.AddUiServices();
                 services.AddViews();
             })

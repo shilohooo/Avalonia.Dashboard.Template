@@ -13,6 +13,6 @@ public static class ServiceCollectionExtenstion
     /// <param name="serviceCollection"></param>
     public static void AddServices(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddSingleton<IMenuService, MenuServices>();
+        serviceCollection.AddSingleton<IMenuService, MenuService>();
     }
 }

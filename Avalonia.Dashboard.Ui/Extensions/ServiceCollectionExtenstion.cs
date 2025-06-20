@@ -1,8 +1,6 @@
-﻿using Avalonia.Dashboard.Abstractions.Factories;
-using Avalonia.Dashboard.Abstractions.Services.Ui;
+﻿using System.Reflection;
+using Avalonia.Dashboard.Abstractions.Factories;
 using Avalonia.Dashboard.Ui.Factories;
-using Avalonia.Dashboard.Ui.Services.Ui;
-using Avalonia.Dashboard.Ui.ViewModels;
 using Avalonia.Dashboard.Ui.Views;
 using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,29 +18,41 @@ public static class ServiceCollectionExtenstion
     /// <param name="serviceCollection"></param>
     public static void AddUiServices(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddSingleton<IMainWindowService, MainWindowService>();
+        var serviceTypes = Assembly.GetAssembly(typeof(MainWindow))!
+            .GetTypes()
+            .Where(t => t is { IsClass: true, IsAbstract: false } && t.FullName!.EndsWith("Service"))
+            .ToList();
+        foreach (var serviceType in serviceTypes)
+        {
+            var interfaces = serviceType.GetInterfaces();
+            if (interfaces.Length == 0)
+            {
+                serviceCollection.AddSingleton(serviceType);
+                continue;
+            }
+
+            foreach (var @interface in interfaces) serviceCollection.AddSingleton(@interface, serviceType);
+        }
+
         // 主窗口
         serviceCollection.AddSingleton<MainWindow>();
         serviceCollection.AddSingleton<Lazy<MainWindow>>(provider =>
             new Lazy<MainWindow>(provider.GetRequiredService<MainWindow>));
-        serviceCollection.AddSingleton<INavigationService, DefaultNavigationService>();
-        serviceCollection.AddSingleton<IThemeService, ThemeService>();
-        serviceCollection.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
         serviceCollection.AddSingleton<IViewModelFactory, DefaultViewModelFactory>();
+        serviceCollection.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
     }
 
     /// <summary>
     ///     注入 View Model
     /// </summary>
     /// <param name="serviceCollection"></param>
-    public static void AddViewModels(this IServiceCollection serviceCollection)
+    public static void AddViewModels<TViewModel>(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient<MainWindowViewModel>();
-        serviceCollection.AddTransient<AppHeaderViewModel>();
-
-        // page view model
-        serviceCollection.AddTransient<HomeViewModel>();
-        serviceCollection.AddTransient<AboutViewModel>();
+        var baseVmType = typeof(TViewModel);
+        var vmTypes = Assembly.GetAssembly(baseVmType)!
+            .GetTypes()
+            .Where(t => t is { IsClass: true, IsAbstract: false } && baseVmType.IsAssignableFrom(t));
+        foreach (var vmType in vmTypes) serviceCollection.AddTransient(vmType);
     }
 
     /// <summary>
@@ -51,7 +61,10 @@ public static class ServiceCollectionExtenstion
     /// <param name="serviceCollection"></param>
     public static void AddViews(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient<HomeView>();
-        serviceCollection.AddTransient<AboutView>();
+        var viewTypes = Assembly.GetAssembly(typeof(MainWindow))!
+            .GetTypes()
+            .Where(t => t is { IsClass: true, IsAbstract: false } && t.FullName!.EndsWith("View"))
+            .ToList();
+        foreach (var viewType in viewTypes) serviceCollection.AddTransient(viewType);
     }
 }
