@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Dashboard.Template", "Avalonia.Dashboard.Template\Avalonia.Dashboard.Template.csproj", "{C35C2907-43E3-4C1B-8D1D-4DE1D003C59E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Dashboard.App", "Avalonia.Dashboard.App\Avalonia.Dashboard.App.csproj", "{C35C2907-43E3-4C1B-8D1D-4DE1D003C59E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Dashboard.Abstractions", "Avalonia.Dashboard.Abstractions\Avalonia.Dashboard.Abstractions.csproj", "{B4718FCF-77A1-4CD1-AE35-D39F423340BA}"
 EndProject

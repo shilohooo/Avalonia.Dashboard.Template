@@ -10,7 +10,7 @@
     Icon="/Assets/avalonia-logo.ico"
     Padding="{Binding MainWindowPadding}"
     SystemDecorations="Full"
-    Title="Avalonia.Dashboard.Template"
+    Title="Avalonia.Dashboard.App"
     WindowStartupLocation="CenterScreen"
     d:DesignHeight="450"
     d:DesignWidth="800"

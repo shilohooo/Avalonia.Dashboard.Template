@@ -1,7 +1,7 @@
 ﻿using System;
-using Avalonia.Dashboard.Template.Extensions;
+using Avalonia.Dashboard.App.Extensions;
 
-namespace Avalonia.Dashboard.Template;
+namespace Avalonia.Dashboard.App;
 
 internal static class Program
 {

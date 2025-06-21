@@ -5,7 +5,7 @@ using Avalonia.Dashboard.Abstractions.ViewModels;
 using Avalonia.Dashboard.Ui;
 using Avalonia.Dashboard.Ui.Views;
 
-namespace Avalonia.Dashboard.Template;
+namespace Avalonia.Dashboard.App;
 
 public class ViewLocator : IDataTemplate
 {

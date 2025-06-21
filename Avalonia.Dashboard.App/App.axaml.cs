@@ -6,7 +6,7 @@ using Avalonia.Dashboard.Ui.Views;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 
-namespace Avalonia.Dashboard.Template;
+namespace Avalonia.Dashboard.App;
 
 public class App : Application
 {

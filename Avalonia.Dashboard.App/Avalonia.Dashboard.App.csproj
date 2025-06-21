@@ -6,8 +6,8 @@
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-        <AssemblyName>Avalonia.Dashboard.Template</AssemblyName>
-        <RootNamespace>Avalonia.Dashboard.Template</RootNamespace>
+        <RootNamespace>Avalonia.Dashboard.App</RootNamespace>
+        <PackageId>Avalonia.Dashboard.App</PackageId>
     </PropertyGroup>
 
     <ItemGroup>

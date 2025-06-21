@@ -1,13 +1,13 @@
 <Application
     RequestedThemeVariant="Dark"
-    x:Class="Avalonia.Dashboard.Template.App"
+    x:Class="Avalonia.Dashboard.App.App"
     xmlns="https://github.com/avaloniaui"
-    xmlns:template="clr-namespace:Avalonia.Dashboard.Template"
+    xmlns:app="clr-namespace:Avalonia.Dashboard.App"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.DataTemplates>
-        <template:ViewLocator />
+        <app:ViewLocator />
     </Application.DataTemplates>
 
     <Application.Styles>

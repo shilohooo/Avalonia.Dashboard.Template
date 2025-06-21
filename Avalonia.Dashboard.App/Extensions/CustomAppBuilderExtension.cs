@@ -4,7 +4,7 @@ using Avalonia.Dashboard.Ui.Extensions;
 using Avalonia.Dashboard.Ui.ViewModels;
 using Microsoft.Extensions.Hosting;
 
-namespace Avalonia.Dashboard.Template.Extensions;
+namespace Avalonia.Dashboard.App.Extensions;
 
 /// <summary>
 /// </summary>
