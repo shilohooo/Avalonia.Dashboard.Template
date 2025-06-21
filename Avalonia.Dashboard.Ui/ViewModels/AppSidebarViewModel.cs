@@ -28,16 +28,6 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
     /// </summary>
     public ObservableCollection<MenuItemViewModel> Menus { get; set; } = [];
 
-    /// <summary>
-    ///     Sidebar menu toggle icon
-    /// </summary>
-    public static IconName SidebarToggleButtonIcon => IconName.MenuRounded;
-
-    /// <summary>
-    ///     App settings icon
-    /// </summary>
-    public static IconName SettingsButtonIcon => IconName.SettingsRounded;
-
     /// <inheritdoc />
     public void Receive(ThemeChangedMessage message)
     {

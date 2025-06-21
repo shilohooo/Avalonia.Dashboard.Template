@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
-using Avalonia.Dashboard.Domains.Enums;
 using Avalonia.Data.Converters;
 
 namespace Avalonia.Dashboard.Ui.Converters;
@@ -22,9 +21,6 @@ public class SvgIconPathConverters : IValueConverter
     /// <inheritdoc />
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        if (value is null) return null;
-
-        var iconName = Path.GetFileNameWithoutExtension(value.ToString());
-        return string.IsNullOrWhiteSpace(iconName) ? null : Enum.Parse(typeof(IconName), iconName);
+        return value is null ? null : Path.GetFileNameWithoutExtension(value.ToString());
     }
 }

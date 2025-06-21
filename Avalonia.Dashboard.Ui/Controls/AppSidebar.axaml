@@ -38,6 +38,17 @@
                 Background="Transparent"
                 DockPanel.Dock="Bottom"
                 HorizontalAlignment="Center">
+                <Button.Styles>
+                    <!--  menu items style  -->
+                    <Style Selector="MenuItem">
+                        <Setter Property="Margin" Value="8, 4" />
+                        <Setter Property="CornerRadius" Value="4" />
+                    </Style>
+
+                    <Style Selector="MenuItem.checked">
+                        <Setter Property="Background" Value="{DynamicResource SelectedMenuItemBgColor}" />
+                    </Style>
+                </Button.Styles>
                 <Button.Flyout>
                     <MenuFlyout
                         HorizontalOffset="0"
@@ -45,20 +56,42 @@
                         Placement="Top">
                         <MenuItem Header="系统主题">
                             <MenuItem
+                                Classes.checked="{Binding !IsDarkMode}"
                                 Command="{Binding ToggleThemeCommand}"
                                 CommandParameter="{x:Static x:Boolean.FalseString}"
-                                Header="亮色主题" />
+                                Header="浅色主题">
+                                <MenuItem.Icon>
+                                    <controls:SvgIcon Classes.checked="{Binding !IsDarkMode}" IconName="LightModeRounded" />
+                                </MenuItem.Icon>
+                            </MenuItem>
                             <MenuItem
+                                Classes.checked="{Binding IsDarkMode}"
                                 Command="{Binding ToggleThemeCommand}"
                                 CommandParameter="{x:Static x:Boolean.TrueString}"
-                                Header="深色主题" />
+                                Header="深色主题">
+                                <MenuItem.Icon>
+                                    <controls:SvgIcon Classes.checked="{Binding !IsDarkMode}" IconName="DarkModeRounded" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+
+                            <MenuItem.Icon>
+                                <controls:SvgIcon IconName="Palette" />
+                            </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Header="语言">
                             <MenuItem Header="简体中文" />
                             <MenuItem Header="English" />
+
+                            <MenuItem.Icon>
+                                <controls:SvgIcon IconName="TranslateRounded" />
+                            </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Header="-" />
-                        <MenuItem Command="{Binding ExitCommand}" Header="退出" />
+                        <MenuItem Command="{Binding ExitCommand}" Header="退出">
+                            <MenuItem.Icon>
+                                <controls:SvgIcon IconName="ExitToAppRounded" />
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </MenuFlyout>
                 </Button.Flyout>
 
