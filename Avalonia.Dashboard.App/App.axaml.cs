@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Dashboard.Ui;
@@ -17,7 +18,7 @@ public class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        Debug.WriteLine("OnFrameworkInitializationCompleted");
+        Ui.Assets.I18n.Resources.Culture = new CultureInfo("en-US");
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 

@@ -43,4 +43,19 @@
         <AvaloniaResource Include="Assets\Icons\MaterialSymbols\MenuRounded.svg"/>
         <AvaloniaResource Include="Assets\Icons\MaterialSymbols\SettingsRounded.svg"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="Assets\I18n\Resources.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Assets\I18n\Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
 </Project>
