@@ -15,7 +15,7 @@ public class MenuItem
     /// <summary>
     ///     菜单图标
     /// </summary>
-    public string Icon { get; init; }
+    public required string Icon { get; init; }
 
     /// <summary>
     ///     菜单对应的页面类型
