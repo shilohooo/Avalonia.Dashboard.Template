@@ -1,5 +1,4 @@
 ﻿using Avalonia.Dashboard.Abstractions.Services.Ui;
-using Avalonia.Dashboard.Domains.Enums;
 using Avalonia.Dashboard.Ui.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -22,24 +21,9 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
     private bool _isMaximized;
 
     /// <summary>
-    ///     应用图标名称
-    /// </summary>
-    public static IconName AppIcon => IconName.ComputerRounded;
-
-    /// <summary>
-    ///     窗口最小化按钮图标名称
-    /// </summary>
-    public static IconName MinimizeButtonIcon => IconName.HorizontalRuleRounded;
-
-    /// <summary>
     ///     窗口最大化切换图标名称
     /// </summary>
     public string MaximizeToggleButtonIcon => IsMaximized ? "FullscreenExitRounded" : "FullscreenRounded";
-
-    /// <summary>
-    ///     退出按钮图标名称
-    /// </summary>
-    public static IconName ExitButtonIcon => IconName.CloseRounded;
 
     public void Receive(MainWindowStateChangedMessage message)
     {
@@ -75,7 +59,7 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
     [RelayCommand]
     private void Maximize()
     {
-        _mainWindowService?.Maximize();
+        _mainWindowService?.ToggleMaximize();
     }
 
     [RelayCommand]

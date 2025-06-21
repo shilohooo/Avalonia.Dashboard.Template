@@ -27,7 +27,10 @@
                 Grid.Column="0"
                 Grid.Row="0"
                 VerticalAlignment="Center">
-                <controls:SvgIcon IconName="ComputerRounded" />
+                <Image
+                    Height="24"
+                    Source="avares://Avalonia.Dashboard.Ui/Assets/avalonia-logo.ico"
+                    Width="24" />
             </StackPanel>
             <!--  应用名称  -->
             <TextBlock

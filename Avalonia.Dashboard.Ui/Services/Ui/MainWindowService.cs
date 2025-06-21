@@ -23,7 +23,7 @@ public class MainWindowService(Lazy<MainWindow> mainWindow, IMessenger messenger
     }
 
     /// <inheritdoc />
-    public void Maximize()
+    public void ToggleMaximize()
     {
         mainWindow.Value.WindowState = mainWindow.Value.WindowState switch
         {

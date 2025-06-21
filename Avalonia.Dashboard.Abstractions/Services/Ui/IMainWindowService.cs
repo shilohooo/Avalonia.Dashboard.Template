@@ -13,7 +13,7 @@ public interface IMainWindowService
     /// <summary>
     ///     主窗口放大/缩小
     /// </summary>
-    void Maximize();
+    void ToggleMaximize();
 
     /// <summary>
     ///     关闭主窗口
