@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Dashboard.Abstractions.Services.I18n;
 using Avalonia.Dashboard.Ui;
 using Avalonia.Dashboard.Ui.Views;
 using Avalonia.Data.Core.Plugins;
@@ -18,7 +19,10 @@ public class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        Ui.Assets.I18n.Resources.Culture = new CultureInfo("en-US");
+        // set default language to English 
+        var localizationService = ServiceLocator.GetRequiredService<ILocalizationService>();
+        localizationService.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 

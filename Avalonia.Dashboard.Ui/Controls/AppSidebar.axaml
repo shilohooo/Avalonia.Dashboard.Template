@@ -1,43 +1,43 @@
 ﻿<UserControl
-    d:DesignHeight="450"
-    d:DesignWidth="800"
-    mc:Ignorable="d"
     x:Class="Avalonia.Dashboard.Ui.Controls.AppSidebar"
-    x:DataType="vm:AppSidebarViewModel"
-    x:Name="AppSidebarControl"
     xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    x:Name="AppSidebarControl"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:AppSidebarViewModel"
+    mc:Ignorable="d">
     <Design.DataContext>
         <vm:AppSidebarViewModel />
     </Design.DataContext>
 
     <Border
+        Padding="4"
         Background="{DynamicResource SidebarBgColor}"
         BorderBrush="{DynamicResource SidebarBorderColor}"
-        BorderThickness="0,0,1,0"
-        Padding="4">
+        BorderThickness="0,0,1,0">
         <DockPanel LastChildFill="True">
             <!--  Toggle button  -->
             <Button
+                HorizontalAlignment="Center"
                 Background="Transparent"
                 Command="{Binding ToggleSidebarCommand}"
-                DockPanel.Dock="Top"
-                HorizontalAlignment="Center">
+                DockPanel.Dock="Top">
                 <controls:SvgIcon
+                    Width="24"
                     Height="24"
-                    IconName="MenuRounded"
-                    Width="24" />
+                    IconName="MenuRounded" />
             </Button>
 
             <!--  Toolbar  -->
             <Button
+                HorizontalAlignment="Center"
                 Background="Transparent"
-                DockPanel.Dock="Bottom"
-                HorizontalAlignment="Center">
+                DockPanel.Dock="Bottom">
                 <Button.Styles>
                     <!--  menu items style  -->
                     <Style Selector="MenuItem">
@@ -78,9 +78,18 @@
                                 <controls:SvgIcon IconName="Palette" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="语言">
-                            <MenuItem Header="简体中文" />
-                            <MenuItem Header="English" />
+                        <MenuItem Header="语言" Tag="zh-CN">
+                            <MenuItem
+                                Classes.checked="{Binding CurrentCultureName, Converter={StaticResource EqualToBooleanConverter}, ConverterParameter='zh-CN'}"
+                                Command="{Binding ChangeLanguageCommand}"
+                                CommandParameter="zh-CN"
+                                Header="简体中文" />
+                            <MenuItem
+                                Classes.checked="{Binding CurrentCultureName, Converter={StaticResource EqualToBooleanConverter}, ConverterParameter='en-US'}"
+                                Command="{Binding ChangeLanguageCommand}"
+                                CommandParameter="en-US"
+                                Header="English"
+                                Tag="en-US" />
 
                             <MenuItem.Icon>
                                 <controls:SvgIcon IconName="TranslateRounded" />
@@ -96,25 +105,25 @@
                 </Button.Flyout>
 
                 <controls:SvgIcon
+                    Width="24"
                     Height="24"
-                    IconName="SettingsRounded"
-                    Width="24" />
+                    IconName="SettingsRounded" />
             </Button>
 
             <!--  Sidebar  -->
             <ItemsControl
-                Background="Transparent"
-                ItemsSource="{Binding Menus}"
                 Margin="0,10,0,10"
-                Padding="4">
+                Padding="4"
+                Background="Transparent"
+                ItemsSource="{Binding Menus}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button
+                            Margin="0,0,0,8"
+                            Padding="16,4"
                             Classes.active="{Binding IsActive}"
                             Command="{Binding DataContext.NavigateCommand, ElementName=AppSidebarControl, FallbackValue=null}"
-                            CommandParameter="{Binding}"
-                            Margin="0,0,0,8"
-                            Padding="16,4">
+                            CommandParameter="{Binding}">
                             <Button.Styles>
                                 <Style Selector="Button">
                                     <Setter Property="Background" Value="Transparent" />
@@ -125,12 +134,12 @@
                             </Button.Styles>
                             <StackPanel>
                                 <controls:SvgIcon
+                                    Width="24"
                                     Height="24"
-                                    IconName="{Binding Icon}"
-                                    Width="24" />
+                                    IconName="{Binding Icon}" />
                                 <TextBlock
-                                    HorizontalAlignment="Center"
                                     Margin="0,4,0,0"
+                                    HorizontalAlignment="Center"
                                     Text="{Binding Title}" />
                             </StackPanel>
                         </Button>

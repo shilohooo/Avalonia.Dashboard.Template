@@ -1,4 +1,8 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!--  Add Resources Here  -->
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Avalonia.Dashboard.Ui.Converters">
 
+    <!--  Add Resources Here  -->
+    <converters:EqualToBooleanConverter x:Key="EqualToBooleanConverter" />
 </ResourceDictionary>

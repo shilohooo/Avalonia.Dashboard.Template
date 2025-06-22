@@ -15,4 +15,7 @@
             PublicKeyToken=b77a5c561934e089
         </value>
     </resheader>
+    <data name="Greeting" xml:space="preserve">
+        <value>Hello, Avalonia</value>
+    </data>
 </root>

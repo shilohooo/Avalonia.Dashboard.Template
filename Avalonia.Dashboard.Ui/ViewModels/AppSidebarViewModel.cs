@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using Avalonia.Dashboard.Abstractions.Services;
+using Avalonia.Dashboard.Abstractions.Services.I18n;
 using Avalonia.Dashboard.Abstractions.Services.Ui;
 using Avalonia.Dashboard.Domains.Enums;
 using Avalonia.Dashboard.Ui.Controls;
@@ -20,8 +22,10 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
     private readonly INavigationService? _navigationService;
     private readonly ISidebarService? _sidebarService;
     private readonly IThemeService? _themeService;
+    private readonly ILocalizationService _localizationService;
 
     [ObservableProperty] private bool _isDarkMode = true;
+    [ObservableProperty] private string _currentCultureName;
 
     /// <summary>
     ///     菜单列表
@@ -83,6 +87,13 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
     {
         _themeService?.ToggleTheme(bool.Parse(value));
     }
+    
+    [RelayCommand]
+    private void ChangeLanguage(string language)
+    {
+        _localizationService.CurrentCulture = CultureInfo.GetCultureInfo(language);
+        CurrentCultureName = _localizationService.CurrentCulture.Name;
+    }
 
     [RelayCommand]
     private void Exit()
@@ -94,19 +105,23 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
 
     #region Constructors
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     public AppSidebarViewModel()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
     }
 
     public AppSidebarViewModel(ISidebarService sidebarService, IThemeService? themeService,
-        IMainWindowService mainWindowService, IMenuService? menuService, INavigationService? navigationService)
+        IMainWindowService mainWindowService, IMenuService? menuService, INavigationService? navigationService, ILocalizationService localizationService)
     {
         _sidebarService = sidebarService;
         _themeService = themeService;
         _mainWindowService = mainWindowService;
         _menuService = menuService;
         _navigationService = navigationService;
+        _localizationService = localizationService;
 
+        CurrentCultureName = _localizationService.CurrentCulture.Name;
         InitMenus();
     }
 

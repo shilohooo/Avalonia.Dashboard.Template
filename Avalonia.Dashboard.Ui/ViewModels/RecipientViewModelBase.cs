@@ -1,12 +1,14 @@
 ﻿using Avalonia.Dashboard.Abstractions.ViewModels;
+using Avalonia.Dashboard.Ui.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace Avalonia.Dashboard.Ui.ViewModels;
 
 /// <summary>
 ///     带消息订阅功能的 ViewModel 基类
 /// </summary>
-public class RecipientViewModelBase : ObservableRecipient, IDisposable, IViewModel
+public class RecipientViewModelBase : ObservableRecipient, IDisposable, IViewModel,IRecipient<CurrentCultureChangedMessage>
 {
     /// <summary>
     ///     资源是否已释放
@@ -37,4 +39,11 @@ public class RecipientViewModelBase : ObservableRecipient, IDisposable, IViewMod
     }
 
     #endregion
+
+    /// <inheritdoc />
+    public void Receive(CurrentCultureChangedMessage message)
+    {
+        // Make all properties change
+        OnPropertyChanged(string.Empty);
+    }
 }

@@ -3,4 +3,10 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Avalonia.Dashboard.Ui.ViewModels;
 
-public class ViewModelBase : ObservableObject, IViewModel;
+public class ViewModelBase : ObservableObject, IViewModel
+{
+    public ViewModelBase()
+    {
+        
+    }
+}
