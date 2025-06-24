@@ -18,4 +18,7 @@
     <data name="Greeting" xml:space="preserve">
         <value>Hello, Avalonia</value>
     </data>
+    <data name="AppName" xml:space="preserve">
+        <value>Avalonia Dashboard Template</value>
+    </data>
 </root>

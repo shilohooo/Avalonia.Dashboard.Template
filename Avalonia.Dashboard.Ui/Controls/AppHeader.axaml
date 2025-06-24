@@ -36,7 +36,7 @@
                 Grid.Column="1"
                 Grid.Row="0"
                 HorizontalAlignment="Center"
-                Text="Avalonia Dashboard Template"
+                Text="{Binding AppName}"
                 VerticalAlignment="Center" />
             <!--  缩小、最大化、退出按钮  -->
             <StackPanel

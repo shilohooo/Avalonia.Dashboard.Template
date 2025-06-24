@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <root>
-    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root"
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+                id="root"
                 xmlns="">
         <xsd:element name="root" msdata:IsDataSet="true">
 
@@ -25,5 +26,8 @@
     </resheader>
     <data name="Greeting" xml:space="preserve">
         <value>Hello, Avalonia</value>
+    </data>
+    <data name="AppName" xml:space="preserve">
+        <value>Avalonia Dashboard Template</value>
     </data>
 </root>

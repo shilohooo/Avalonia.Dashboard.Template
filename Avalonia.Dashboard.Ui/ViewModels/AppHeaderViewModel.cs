@@ -1,4 +1,6 @@
-﻿using Avalonia.Dashboard.Abstractions.Services.Ui;
+﻿using Avalonia.Dashboard.Abstractions.Services.I18n;
+using Avalonia.Dashboard.Abstractions.Services.Ui;
+using Avalonia.Dashboard.Ui.Assets.I18n;
 using Avalonia.Dashboard.Ui.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -13,6 +15,7 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
     IRecipient<ThemeChangedMessage>,
     IRecipient<MainWindowStateChangedMessage>
 {
+    private readonly ILocalizationService _localizationService;
     private readonly IMainWindowService? _mainWindowService;
 
     [ObservableProperty] private bool _isDarkMode = true;
@@ -24,6 +27,11 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
     ///     窗口最大化切换图标名称
     /// </summary>
     public string MaximizeToggleButtonIcon => IsMaximized ? "FullscreenExitRounded" : "FullscreenRounded";
+
+    /// <summary>
+    /// 应用名称
+    /// </summary>
+    public string AppName => _localizationService[nameof(Resources.AppName)];
 
     public void Receive(MainWindowStateChangedMessage message)
     {
@@ -37,13 +45,16 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
 
     #region Constructors
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     public AppHeaderViewModel()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
     }
 
-    public AppHeaderViewModel(IMainWindowService mainWindowService)
+    public AppHeaderViewModel(IMainWindowService mainWindowService, ILocalizationService localizationService)
     {
         _mainWindowService = mainWindowService;
+        _localizationService = localizationService;
     }
 
     #endregion
