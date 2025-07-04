@@ -46,7 +46,7 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
         const ViewName defaultActiveViewName = ViewName.Home;
         var menuItems = _menuService?.GetMenuItems().Select(item =>
         {
-            var menuItemViewModel = new MenuItemViewModel(item)
+            var menuItemViewModel = new MenuItemViewModel(item, _localizationService)
             {
                 IsActive = item.ViewName == defaultActiveViewName
             };

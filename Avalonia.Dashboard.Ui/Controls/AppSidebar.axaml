@@ -119,11 +119,13 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button
+                            Width="74"
                             Margin="0,0,0,8"
                             Padding="16,4"
                             Classes.active="{Binding IsActive}"
                             Command="{Binding DataContext.NavigateCommand, ElementName=AppSidebarControl, FallbackValue=null}"
-                            CommandParameter="{Binding}">
+                            CommandParameter="{Binding}"
+                            ToolTip.Tip="{Binding Title}">
                             <Button.Styles>
                                 <Style Selector="Button">
                                     <Setter Property="Background" Value="Transparent" />
@@ -140,7 +142,8 @@
                                 <TextBlock
                                     Margin="0,4,0,0"
                                     HorizontalAlignment="Center"
-                                    Text="{Binding Title}" />
+                                    Text="{Binding Title}"
+                                    TextTrimming="CharacterEllipsis" />
                             </StackPanel>
                         </Button>
                     </DataTemplate>

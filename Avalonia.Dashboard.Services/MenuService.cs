@@ -14,8 +14,8 @@ public class MenuService : IMenuService
     {
         return
         [
-            new MenuItem { Title = "主页", Icon = "Home", ViewName = ViewName.Home },
-            new MenuItem { Title = "关于", Icon = "InfoRounded", ViewName = ViewName.About }
+            new MenuItem { Title = "HomeMenuTitle", Icon = "Home", ViewName = ViewName.Home },
+            new MenuItem { Title = "AboutMenuTitle", Icon = "InfoRounded", ViewName = ViewName.About }
         ];
     }
 }

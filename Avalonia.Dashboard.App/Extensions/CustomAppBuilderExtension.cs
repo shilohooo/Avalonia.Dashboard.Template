@@ -29,6 +29,7 @@ public static class CustomAppBuilderExtension
         return AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
+            
             .LogToTrace();
     }
 }

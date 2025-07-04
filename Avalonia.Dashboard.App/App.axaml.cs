@@ -6,6 +6,7 @@ using Avalonia.Dashboard.Abstractions.Services.I18n;
 using Avalonia.Dashboard.Ui;
 using Avalonia.Dashboard.Ui.Views;
 using Avalonia.Data.Core.Plugins;
+using Avalonia.Diagnostics;
 using Avalonia.Markup.Xaml;
 
 namespace Avalonia.Dashboard.App;
@@ -34,6 +35,7 @@ public class App : Application
         }
 
         base.OnFrameworkInitializationCompleted();
+        this.AttachDevTools(new DevToolsOptions { StartupScreenIndex = 1 });
     }
 
     private static void DisableAvaloniaDataAnnotationValidation()

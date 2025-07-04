@@ -21,4 +21,10 @@
     <data name="AppName" xml:space="preserve">
         <value>Avalonia 模板</value>
     </data>
+    <data name="AboutMenuTitle" xml:space="preserve">
+        <value>关于</value>
+    </data>
+    <data name="HomeMenuTitle" xml:space="preserve">
+        <value>主页</value>
+    </data>
 </root>

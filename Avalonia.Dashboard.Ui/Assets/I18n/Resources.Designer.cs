@@ -60,6 +60,15 @@ namespace Avalonia.Dashboard.Ui.Assets.I18n {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string AboutMenuTitle {
+            get {
+                return ResourceManager.GetString("AboutMenuTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Avalonia Dashboard Template.
         /// </summary>
         public static string AppName {
@@ -74,6 +83,15 @@ namespace Avalonia.Dashboard.Ui.Assets.I18n {
         public static string Greeting {
             get {
                 return ResourceManager.GetString("Greeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        public static string HomeMenuTitle {
+            get {
+                return ResourceManager.GetString("HomeMenuTitle", resourceCulture);
             }
         }
     }

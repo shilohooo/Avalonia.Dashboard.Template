@@ -30,4 +30,10 @@
     <data name="AppName" xml:space="preserve">
         <value>Avalonia Dashboard Template</value>
     </data>
+    <data name="HomeMenuTitle" xml:space="preserve">
+        <value>Dashboard</value>
+    </data>
+    <data name="AboutMenuTitle" xml:space="preserve">
+        <value>About</value>
+    </data>
 </root>
