@@ -14,6 +14,9 @@ Just enjoy it:)
 - Dark/Light theme
 - Dependency Injection
 - HotReload
+- Localization
+  - en-US
+  - zh-CN
 
 ## 📸 Screenshots
 
