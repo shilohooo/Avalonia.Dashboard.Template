@@ -15,8 +15,8 @@ Just enjoy it:)
 - Dependency Injection
 - HotReload
 - Localization
-  - en-US
-  - zh-CN
+  - [x] en-US
+  - [x] zh-CN
 
 ## 📸 Screenshots
 
