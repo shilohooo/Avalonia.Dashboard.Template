@@ -23,7 +23,7 @@ public class App : Application
         // set default language to English 
         var localizationService = ServiceLocator.GetRequiredService<ILocalizationService>();
         localizationService.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
-        
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -32,10 +32,16 @@ public class App : Application
             Debug.WriteLine("Getting MainWindow");
             var mainWindow = ServiceLocator.GetRequiredService<MainWindow>();
             desktop.MainWindow = mainWindow;
+
+#if DEBUG
+            mainWindow.AttachDevTools(new DevToolsOptions
+            {
+                StartupScreenIndex = 1
+            });
+#endif
         }
 
         base.OnFrameworkInitializationCompleted();
-        this.AttachDevTools(new DevToolsOptions { StartupScreenIndex = 1 });
     }
 
     private static void DisableAvaloniaDataAnnotationValidation()
