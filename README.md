@@ -20,13 +20,7 @@ Just enjoy it:)
 
 ## 📸 Screenshots
 
-### Dark
-
-![Dark](./Screenshots/Dark.png)
-
-### Light
-
-![Light](./Screenshots/Light.png)
+![Demo](./Screenshots/Avalonia.Dashboard.Template.gif)
 
 ## 💻 Stack
 
