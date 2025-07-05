@@ -36,4 +36,10 @@
     <data name="AboutMenuTitle" xml:space="preserve">
         <value>About</value>
     </data>
+    <data name="MenuSearchPlaceholder" xml:space="preserve">
+        <value>Search menus...</value>
+    </data>
+    <data name="MenuAreaPlaceholder" xml:space="preserve">
+        <value>Sub Menus...</value>
+    </data>
 </root>

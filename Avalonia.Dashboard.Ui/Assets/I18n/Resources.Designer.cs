@@ -94,5 +94,23 @@ namespace Avalonia.Dashboard.Ui.Assets.I18n {
                 return ResourceManager.GetString("HomeMenuTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sub Menus....
+        /// </summary>
+        public static string MenuAreaPlaceholder {
+            get {
+                return ResourceManager.GetString("MenuAreaPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search menus....
+        /// </summary>
+        public static string MenuSearchPlaceholder {
+            get {
+                return ResourceManager.GetString("MenuSearchPlaceholder", resourceCulture);
+            }
+        }
     }
 }

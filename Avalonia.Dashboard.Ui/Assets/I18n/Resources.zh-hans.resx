@@ -27,4 +27,10 @@
     <data name="HomeMenuTitle" xml:space="preserve">
         <value>主页</value>
     </data>
+    <data name="MenuAreaPlaceholder" xml:space="preserve">
+        <value>子菜单区域...</value>
+    </data>
+    <data name="MenuSearchPlaceholder" xml:space="preserve">
+        <value>搜索菜单...</value>
+    </data>
 </root>

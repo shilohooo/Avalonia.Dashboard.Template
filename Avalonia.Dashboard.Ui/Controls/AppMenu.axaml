@@ -1,27 +1,29 @@
 ﻿<UserControl
-    d:DesignHeight="450"
-    d:DesignWidth="800"
-    mc:Ignorable="d"
     x:Class="Avalonia.Dashboard.Ui.Controls.AppMenu"
-    x:DataType="vm:AppMenuViewModel"
-    x:Name="AppMenuControl"
     xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    x:Name="AppMenuControl"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:AppMenuViewModel"
+    mc:Ignorable="d"
+    >
     <Design.DataContext>
         <vm:AppMenuViewModel />
     </Design.DataContext>
 
     <Border
+        Padding="8"
         Background="{DynamicResource SidebarBgColor}"
         BorderBrush="{DynamicResource SidebarBorderColor}"
         BorderThickness="0,0,1,0"
-        Padding="8">
+        >
         <StackPanel Spacing="10">
-            <TextBox Watermark="搜索菜单..." />
-            <TextBlock Text="二级导航区域" />
+            <TextBox Watermark="{Binding MenuSearchPlaceholder}" />
+            <TextBlock Text="{Binding MenuAreaPlaceholder}" />
         </StackPanel>
     </Border>
 </UserControl>
