@@ -33,4 +33,19 @@
     <data name="MenuSearchPlaceholder" xml:space="preserve">
         <value>Search menus...</value>
     </data>
+    <data name="ExitButtonText" xml:space="preserve">
+        <value>Exit</value>
+    </data>
+    <data name="LanguageButtonText" xml:space="preserve">
+        <value>Language</value>
+    </data>
+    <data name="ThemesButtonText" xml:space="preserve">
+        <value>Themes</value>
+    </data>
+    <data name="LightThemeName" xml:space="preserve">
+        <value>Light</value>
+    </data>
+    <data name="DarkThemeName" xml:space="preserve">
+        <value>Dark</value>
+    </data>
 </root>

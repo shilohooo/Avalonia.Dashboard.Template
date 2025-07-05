@@ -4,6 +4,7 @@ using Avalonia.Dashboard.Abstractions.Services;
 using Avalonia.Dashboard.Abstractions.Services.I18n;
 using Avalonia.Dashboard.Abstractions.Services.Ui;
 using Avalonia.Dashboard.Domains.Enums;
+using Avalonia.Dashboard.Ui.Assets.I18n;
 using Avalonia.Dashboard.Ui.Controls;
 using Avalonia.Dashboard.Ui.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -17,15 +18,15 @@ namespace Avalonia.Dashboard.Ui.ViewModels;
 /// </summary>
 public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<ThemeChangedMessage>
 {
+    private readonly ILocalizationService _localizationService;
     private readonly IMainWindowService? _mainWindowService;
     private readonly IMenuService? _menuService;
     private readonly INavigationService? _navigationService;
     private readonly ISidebarService? _sidebarService;
     private readonly IThemeService? _themeService;
-    private readonly ILocalizationService _localizationService;
+    [ObservableProperty] private string _currentCultureName;
 
     [ObservableProperty] private bool _isDarkMode = true;
-    [ObservableProperty] private string _currentCultureName;
 
     /// <summary>
     ///     菜单列表
@@ -57,6 +58,20 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
         _navigationService?.NavigateTo(defaultActiveViewName);
     }
 
+    #region Properties
+
+    public string ExitButtonText => _localizationService[nameof(Resources.ExitButtonText)];
+
+    public string LanguageButtonText => _localizationService[nameof(Resources.LanguageButtonText)];
+
+    public string ThemesButtonText => _localizationService[nameof(Resources.ThemesButtonText)];
+
+    public string LightThemeName => _localizationService[nameof(Resources.LightThemeName)];
+
+    public string DarkThemeName => _localizationService[nameof(Resources.DarkThemeName)];
+
+    #endregion
+
     #region Commands
 
     [RelayCommand]
@@ -87,7 +102,7 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
     {
         _themeService?.ToggleTheme(bool.Parse(value));
     }
-    
+
     [RelayCommand]
     private void ChangeLanguage(string language)
     {
@@ -112,7 +127,8 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
     }
 
     public AppSidebarViewModel(ISidebarService sidebarService, IThemeService? themeService,
-        IMainWindowService mainWindowService, IMenuService? menuService, INavigationService? navigationService, ILocalizationService localizationService)
+        IMainWindowService mainWindowService, IMenuService? menuService, INavigationService? navigationService,
+        ILocalizationService localizationService)
     {
         _sidebarService = sidebarService;
         _themeService = themeService;

@@ -78,6 +78,24 @@ namespace Avalonia.Dashboard.Ui.Assets.I18n {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        public static string DarkThemeName {
+            get {
+                return ResourceManager.GetString("DarkThemeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string ExitButtonText {
+            get {
+                return ResourceManager.GetString("ExitButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello, Avalonia.
         /// </summary>
         public static string Greeting {
@@ -96,6 +114,24 @@ namespace Avalonia.Dashboard.Ui.Assets.I18n {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string LanguageButtonText {
+            get {
+                return ResourceManager.GetString("LanguageButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        public static string LightThemeName {
+            get {
+                return ResourceManager.GetString("LightThemeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sub Menus....
         /// </summary>
         public static string MenuAreaPlaceholder {
@@ -110,6 +146,15 @@ namespace Avalonia.Dashboard.Ui.Assets.I18n {
         public static string MenuSearchPlaceholder {
             get {
                 return ResourceManager.GetString("MenuSearchPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Themes.
+        /// </summary>
+        public static string ThemesButtonText {
+            get {
+                return ResourceManager.GetString("ThemesButtonText", resourceCulture);
             }
         }
     }

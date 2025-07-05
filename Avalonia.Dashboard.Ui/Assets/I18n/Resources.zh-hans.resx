@@ -33,4 +33,19 @@
     <data name="MenuSearchPlaceholder" xml:space="preserve">
         <value>搜索菜单...</value>
     </data>
+    <data name="ExitButtonText" xml:space="preserve">
+        <value>退出</value>
+    </data>
+    <data name="LanguageButtonText" xml:space="preserve">
+        <value>系统语言</value>
+    </data>
+    <data name="ThemesButtonText" xml:space="preserve">
+        <value>系统主题</value>
+    </data>
+    <data name="LightThemeName" xml:space="preserve">
+        <value>浅色主题</value>
+    </data>
+    <data name="DarkThemeName" xml:space="preserve">
+        <value>深色主题</value>
+    </data>
 </root>
