@@ -1,5 +1,8 @@
 ﻿# Avalonia Dashboard Template
 
+> [!IMPORTANT]
+> 🚧 The project is currently under active development and features are subject to change at any time.
+
 A dashboard template for Avalonia UI, including a simple app layout and page navigation:)
 
 This project can be used as a scaffold for building your own application.
