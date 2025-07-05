@@ -3,6 +3,7 @@
 ## Added at 2025-07-05
 
 - [ ] Using GitHub workflows to build and publish
+- [ ] Add an [.editorconfig](https://editorconfig.org/) file to enforce a consistent code style across the project
 
 ## Added at 2025-06-21
 
