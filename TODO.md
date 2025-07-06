@@ -4,6 +4,8 @@
 
 - [ ] Using GitHub workflows to build and publish
 - [ ] Add an [.editorconfig](https://editorconfig.org/) file to enforce a consistent code style across the project
+  - [x] Standard EditorConfig properties
+  - [ ] Microsoft .NET Properties
 
 ## Added at 2025-06-21
 
