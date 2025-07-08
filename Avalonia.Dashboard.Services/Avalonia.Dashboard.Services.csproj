@@ -8,10 +8,20 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Avalonia.Dashboard.Abstractions\Avalonia.Dashboard.Abstractions.csproj"/>
+        <ProjectReference Include="..\Avalonia.Dashboard.Common\Avalonia.Dashboard.Common.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0-preview.5.25277.114"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Configs\menu.schema.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Configs\menus.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

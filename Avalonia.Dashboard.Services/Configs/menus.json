@@ -1,0 +1,12 @@
+[
+  {
+    "title": "HomeMenuTitle",
+    "icon": "Home",
+    "viewName": "Home"
+  },
+  {
+    "title": "AboutMenuTitle",
+    "icon": "InfoRounded",
+    "viewName": "About"
+  }
+]

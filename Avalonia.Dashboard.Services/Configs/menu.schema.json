@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "menu title"
+      },
+      "icon": {
+        "type": "string",
+        "description": "menu icon file name in Avalonia.Dashboard.Ui/Assets/Icons/MaterialSymbols"
+      },
+      "viewName": {
+        "type": "string",
+        "description": "key name of Avalonia.Dashboard.Ui.Services.Ui.DefaultNavigationService.ViewMappings"
+      }
+    }
+  }
+}

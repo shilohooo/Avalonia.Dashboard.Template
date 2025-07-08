@@ -1,21 +1,19 @@
 ﻿using Avalonia.Dashboard.Abstractions.Services;
-using Avalonia.Dashboard.Domains.Enums;
+using Avalonia.Dashboard.Common.Helpers;
 using Avalonia.Dashboard.Domains.Models;
 
 namespace Avalonia.Dashboard.Services;
 
 /// <summary>
-///     菜单服务实现
+///     Menu service impl
 /// </summary>
 public class MenuService : IMenuService
 {
     /// <inheritdoc />
     public List<MenuItem> GetMenuItems()
     {
-        return
-        [
-            new MenuItem { Title = "HomeMenuTitle", Icon = "Home", ViewName = ViewName.Home },
-            new MenuItem { Title = "AboutMenuTitle", Icon = "InfoRounded", ViewName = ViewName.About }
-        ];
+        var menuJsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs", "menus.json");
+        var menusJsonStr = File.ReadAllText(menuJsonFilePath);
+        return JsonHelper.Deserialize<List<MenuItem>>(menusJsonStr) ?? [];
     }
 }

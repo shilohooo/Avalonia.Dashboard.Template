@@ -8,17 +8,18 @@ namespace Avalonia.Dashboard.Domains.Models;
 public class MenuItem
 {
     /// <summary>
-    ///     菜单标题
+    ///     menu title resources key
     /// </summary>
     public required string Title { get; init; }
 
     /// <summary>
-    ///     菜单图标
+    ///     menu icon filename
+    ///     <remarks>one of Avalonia.Dashboard.Ui/Assets/Icons/MaterialSymbols/*.svg file</remarks>
     /// </summary>
     public required string Icon { get; init; }
 
     /// <summary>
-    ///     菜单对应的页面类型
+    ///     a key of Avalonia.Dashboard.Ui.Services.Ui.DefaultNavigationService.ViewMappings field
     /// </summary>
     public required ViewName ViewName { get; init; }
 }
