@@ -1,12 +1,13 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using Avalonia.Dashboard.Abstractions.Services;
 using Avalonia.Dashboard.Abstractions.Services.I18n;
 using Avalonia.Dashboard.Abstractions.Services.Ui;
-using Avalonia.Dashboard.Domains.Enums;
 using Avalonia.Dashboard.Ui.Assets.I18n;
 using Avalonia.Dashboard.Ui.Controls;
 using Avalonia.Dashboard.Ui.Messages;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
@@ -21,9 +22,10 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
     private readonly ILocalizationService _localizationService;
     private readonly IMainWindowService? _mainWindowService;
     private readonly IMenuService? _menuService;
-    private readonly INavigationService? _navigationService;
+    private readonly IMessenger _messenger;
     private readonly ISidebarService? _sidebarService;
     private readonly IThemeService? _themeService;
+
     [ObservableProperty] private string _currentCultureName;
 
     [ObservableProperty] private bool _isDarkMode = true;
@@ -44,18 +46,23 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
     /// </summary>
     private void InitMenus()
     {
-        const ViewName defaultActiveViewName = ViewName.Home;
-        var menuItems = _menuService?.GetMenuItems().Select(item =>
-        {
-            var menuItemViewModel = new MenuItemViewModel(item, _localizationService)
-            {
-                IsActive = item.ViewName == defaultActiveViewName
-            };
-            return menuItemViewModel;
-        }).ToList();
+        var menuItems = _menuService?.GetMenuItems().Select(item => new MenuItemViewModel(item, _localizationService))
+            .ToList();
         Menus = new ObservableCollection<MenuItemViewModel>(menuItems ?? []);
+        
+        Dispatcher.UIThread.Post(() =>
+        {
+            var firstMenu = Menus[0];
+            firstMenu.IsActive = true;
 
-        _navigationService?.NavigateTo(defaultActiveViewName);
+            if (firstMenu.Children.Count == 0) return;
+
+            _messenger.Send(() =>
+            {
+                Debug.WriteLine("Send SubMenusChangedMessage after init menus");
+                return new SubMenusChangedMessage(firstMenu.Children);
+            });
+        });
     }
 
     #region Properties
@@ -94,7 +101,7 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
             menuItemViewModel.IsActive = false;
         }
 
-        _navigationService?.NavigateTo(clickMenu.ViewName);
+        _messenger.Send(new SubMenusChangedMessage(clickMenu.Children));
     }
 
     [RelayCommand]
@@ -127,17 +134,18 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
     }
 
     public AppSidebarViewModel(ISidebarService sidebarService, IThemeService? themeService,
-        IMainWindowService mainWindowService, IMenuService? menuService, INavigationService? navigationService,
-        ILocalizationService localizationService)
+        IMainWindowService mainWindowService, IMenuService? menuService, ILocalizationService localizationService,
+        IMessenger messenger)
     {
         _sidebarService = sidebarService;
         _themeService = themeService;
         _mainWindowService = mainWindowService;
         _menuService = menuService;
-        _navigationService = navigationService;
         _localizationService = localizationService;
+        _messenger = messenger;
 
         CurrentCultureName = _localizationService.CurrentCulture.Name;
+
         InitMenus();
     }
 

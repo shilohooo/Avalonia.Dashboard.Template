@@ -20,6 +20,12 @@ public class MenuItem
 
     /// <summary>
     ///     a key of Avalonia.Dashboard.Ui.Services.Ui.DefaultNavigationService.ViewMappings field
+    ///     <remarks>Sidebar menu is a dir, so ViewName is nullable</remarks>
     /// </summary>
-    public required ViewName ViewName { get; init; }
+    public ViewName? ViewName { get; init; }
+
+    /// <summary>
+    ///     Sub menus
+    /// </summary>
+    public List<MenuItem> Children { get; set; } = [];
 }

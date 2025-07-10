@@ -78,6 +78,15 @@ namespace Avalonia.Dashboard.Ui.Assets.I18n {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bug Report.
+        /// </summary>
+        public static string BugReportMenuTitle {
+            get {
+                return ResourceManager.GetString("BugReportMenuTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark.
         /// </summary>
         public static string DarkThemeName {
@@ -105,7 +114,7 @@ namespace Avalonia.Dashboard.Ui.Assets.I18n {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dashboard.
+        ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string HomeMenuTitle {
             get {
@@ -150,11 +159,38 @@ namespace Avalonia.Dashboard.Ui.Assets.I18n {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overview.
+        /// </summary>
+        public static string OverviewMenuTitle {
+            get {
+                return ResourceManager.GetString("OverviewMenuTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Info.
+        /// </summary>
+        public static string ProjectInfoMenuTitle {
+            get {
+                return ResourceManager.GetString("ProjectInfoMenuTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Themes.
         /// </summary>
         public static string ThemesButtonText {
             get {
                 return ResourceManager.GetString("ThemesButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Workspace.
+        /// </summary>
+        public static string WorkspaceMenuTitle {
+            get {
+                return ResourceManager.GetString("WorkspaceMenuTitle", resourceCulture);
             }
         }
     }

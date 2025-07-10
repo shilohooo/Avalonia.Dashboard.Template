@@ -2,6 +2,7 @@
     x:Class="Avalonia.Dashboard.Ui.Controls.AppMenu"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
@@ -23,7 +24,48 @@
         >
         <StackPanel Spacing="10">
             <TextBox Watermark="{Binding MenuSearchPlaceholder}" />
-            <TextBlock Text="{Binding MenuAreaPlaceholder}" />
+
+            <!--  Sub Menus  -->
+            <ItemsControl
+                Margin="0,10,0,10"
+                Padding="4"
+                Background="Transparent"
+                ItemsSource="{Binding Menus}"
+                >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button
+                            Margin="0,0,0,8"
+                            Padding="4,8"
+                            HorizontalAlignment="Stretch"
+                            Classes.active="{Binding IsActive}"
+                            ToolTip.Tip="{Binding Title}"
+                            >
+                            <Button.Styles>
+                                <Style Selector="Button">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Style>
+                                <Style Selector="Button.active">
+                                    <Setter Property="Background" Value="{DynamicResource SelectedMenuItemBgColor}" />
+                                </Style>
+                            </Button.Styles>
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <controls:SvgIcon
+                                    Width="24"
+                                    Height="24"
+                                    IconName="{Binding Icon}"
+                                    />
+                                <TextBlock
+                                    Margin="0,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Title}"
+                                    TextTrimming="CharacterEllipsis"
+                                    />
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
     </Border>
 </UserControl>

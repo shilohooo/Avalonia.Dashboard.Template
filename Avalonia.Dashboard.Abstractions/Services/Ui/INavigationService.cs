@@ -8,8 +8,8 @@ namespace Avalonia.Dashboard.Abstractions.Services.Ui;
 public interface INavigationService
 {
     /// <summary>
-    ///     导航到指定页面
+    ///     Navigate to specified view~
     /// </summary>
-    /// <param name="viewName">页面视图名称</param>
-    void NavigateTo(ViewName viewName);
+    /// <param name="viewName">view name, is a key of ViewMappings</param>
+    void NavigateTo(ViewName? viewName);
 }

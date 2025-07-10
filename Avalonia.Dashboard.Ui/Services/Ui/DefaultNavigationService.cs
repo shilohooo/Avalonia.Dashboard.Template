@@ -26,9 +26,11 @@ public class DefaultNavigationService(IViewModelFactory viewModelFactory, IMesse
     private IViewModel? CurrentPage { get; set; }
 
     /// <inheritdoc />
-    public void NavigateTo(ViewName viewName)
+    public void NavigateTo(ViewName? viewName)
     {
-        var vmType = ViewMappings[viewName];
+        if (viewName is null) return;
+
+        var vmType = ViewMappings[viewName.Value];
         if (!typeof(IViewModel).IsAssignableFrom(vmType))
         {
             Debug.WriteLine($"页面导航出错：{viewName} 不是 {nameof(IViewModel)} 类型");

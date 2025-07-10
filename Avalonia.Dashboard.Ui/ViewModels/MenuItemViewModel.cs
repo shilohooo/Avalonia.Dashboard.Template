@@ -8,30 +8,52 @@ namespace Avalonia.Dashboard.Ui.ViewModels;
 /// <summary>
 ///     菜单项 view model
 /// </summary>
-public partial class MenuItemViewModel(MenuItem menu, ILocalizationService localizationService) : RecipientViewModelBase
+public partial class MenuItemViewModel : RecipientViewModelBase
 {
-    /// <summary>
-    ///     菜单是否激活
-    /// </summary>
-    [ObservableProperty] private bool _isActive;
+    private readonly ILocalizationService _localizationService;
 
     /// <summary>
     ///     Readonly menu title resource key
     /// </summary>
-    private readonly string _titleResourceKey = menu.Title;
+    private readonly string _titleResourceKey;
 
     /// <summary>
-    ///     菜单标题
+    ///     Menu activation flag
     /// </summary>
-    public string Title => localizationService[_titleResourceKey];
+    [ObservableProperty] private bool _isActive;
+
+    #region Constructors
+
+    public MenuItemViewModel(MenuItem menu, ILocalizationService localizationService)
+    {
+        _localizationService = localizationService;
+        _titleResourceKey = menu.Title;
+        Icon = menu.Icon;
+        ViewName = menu.ViewName;
+        Children = menu.Children
+            .Select(item => new MenuItemViewModel(item, _localizationService))
+            .ToList();
+    }
+
+    #endregion
 
     /// <summary>
-    ///     菜单图标
+    ///     Menu title
     /// </summary>
-    public string Icon { get; set; } = menu.Icon;
+    public string Title => _localizationService[_titleResourceKey];
 
     /// <summary>
-    ///     菜单对应的页面类型
+    ///     Menu icon
     /// </summary>
-    public ViewName ViewName { get; } = menu.ViewName;
+    public string Icon { get; set; }
+
+    /// <summary>
+    ///     The name of the page corresponding to the menu
+    /// </summary>
+    public ViewName? ViewName { get; }
+
+    /// <summary>
+    ///     Sub menus
+    /// </summary>
+    public List<MenuItemViewModel> Children { get; }
 }

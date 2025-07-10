@@ -31,7 +31,7 @@
         <value>Avalonia Dashboard Template</value>
     </data>
     <data name="HomeMenuTitle" xml:space="preserve">
-        <value>Dashboard</value>
+        <value>Home</value>
     </data>
     <data name="AboutMenuTitle" xml:space="preserve">
         <value>About</value>
@@ -56,5 +56,17 @@
     </data>
     <data name="DarkThemeName" xml:space="preserve">
         <value>Dark</value>
+    </data>
+    <data name="OverviewMenuTitle" xml:space="preserve">
+        <value>Overview</value>
+    </data>
+    <data name="ProjectInfoMenuTitle" xml:space="preserve">
+        <value>Project Info</value>
+    </data>
+    <data name="WorkspaceMenuTitle" xml:space="preserve">
+        <value>Workspace</value>
+    </data>
+    <data name="BugReportMenuTitle" xml:space="preserve">
+        <value>Bug Report</value>
     </data>
 </root>

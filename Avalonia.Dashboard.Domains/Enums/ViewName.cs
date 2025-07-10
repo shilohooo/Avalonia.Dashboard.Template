@@ -6,5 +6,7 @@
 public enum ViewName
 {
     Home,
-    About
+    Workspace,
+    About,
+    BugReport
 }

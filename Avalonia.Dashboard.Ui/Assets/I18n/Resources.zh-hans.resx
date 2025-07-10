@@ -48,4 +48,16 @@
     <data name="DarkThemeName" xml:space="preserve">
         <value>深色主题</value>
     </data>
+    <data name="OverviewMenuTitle" xml:space="preserve">
+        <value>概览</value>
+    </data>
+    <data name="ProjectInfoMenuTitle" xml:space="preserve">
+        <value>项目信息</value>
+    </data>
+    <data name="WorkspaceMenuTitle" xml:space="preserve">
+        <value>工作台</value>
+    </data>
+    <data name="BugReportMenuTitle" xml:space="preserve">
+        <value>问题反馈</value>
+    </data>
 </root>

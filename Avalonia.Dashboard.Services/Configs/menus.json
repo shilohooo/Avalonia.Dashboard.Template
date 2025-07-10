@@ -2,11 +2,33 @@
   {
     "title": "HomeMenuTitle",
     "icon": "Home",
-    "viewName": "Home"
+    "children": [
+      {
+        "title": "OverviewMenuTitle",
+        "icon": "Home",
+        "viewName": "Home"
+      },
+      {
+        "title": "WorkspaceMenuTitle",
+        "icon": "Home",
+        "viewName": "Workspace"
+      }
+    ]
   },
   {
     "title": "AboutMenuTitle",
     "icon": "InfoRounded",
-    "viewName": "About"
+    "children": [
+      {
+        "title": "ProjectInfoMenuTitle",
+        "icon": "InfoRounded",
+        "viewName": "About"
+      },
+      {
+        "title": "BugReportMenuTitle",
+        "icon": "InfoRounded",
+        "viewName": "BugReport"
+      }
+    ]
   }
 ]
