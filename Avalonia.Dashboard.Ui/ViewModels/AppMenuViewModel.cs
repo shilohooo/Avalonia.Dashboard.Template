@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
 using Avalonia.Dashboard.Abstractions.Services.I18n;
 using Avalonia.Dashboard.Abstractions.Services.Ui;
 using Avalonia.Dashboard.Ui.Assets.I18n;
@@ -32,7 +31,6 @@ public class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMenusChang
     /// <param name="message">message</param>
     public void Receive(SubMenusChangedMessage message)
     {
-        // FIXME Can't be received on app startup
         if (message.Value.Count == 0)
         {
             Menus = [];

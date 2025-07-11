@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Globalization;
 using Avalonia.Dashboard.Abstractions.Services;
 using Avalonia.Dashboard.Abstractions.Services.I18n;
@@ -42,14 +41,15 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
     }
 
     /// <summary>
-    ///     Init menu data, then navigate to home view
+    ///     Init menu data
     /// </summary>
     private void InitMenus()
     {
         var menuItems = _menuService?.GetMenuItems().Select(item => new MenuItemViewModel(item, _localizationService))
             .ToList();
         Menus = new ObservableCollection<MenuItemViewModel>(menuItems ?? []);
-        
+
+        // navigate to first menu
         Dispatcher.UIThread.Post(() =>
         {
             var firstMenu = Menus[0];
@@ -57,11 +57,7 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
 
             if (firstMenu.Children.Count == 0) return;
 
-            _messenger.Send(() =>
-            {
-                Debug.WriteLine("Send SubMenusChangedMessage after init menus");
-                return new SubMenusChangedMessage(firstMenu.Children);
-            });
+            _messenger.Send(new SubMenusChangedMessage(firstMenu.Children));
         });
     }
 
