@@ -18,7 +18,9 @@ public class DefaultNavigationService(IViewModelFactory viewModelFactory, IMesse
     private static readonly ImmutableDictionary<ViewName, Type> ViewMappings = ImmutableDictionary
         .Create<ViewName, Type>()
         .Add(ViewName.Home, typeof(HomeViewModel))
-        .Add(ViewName.About, typeof(AboutViewModel));
+        .Add(ViewName.Workspace, typeof(WorkspaceViewModel))
+        .Add(ViewName.About, typeof(AboutViewModel))
+        .Add(ViewName.BugReport, typeof(BugReportViewModel));
 
     /// <summary>
     ///     当前页面对应的 view model

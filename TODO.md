@@ -1,5 +1,10 @@
 ﻿# TODO
 
+## Added at 2025-07-11
+
+- [ ] Using LiveCharts2 to display some chart data on the overview page
+- [ ] Add a feedback link to the bug report page
+
 ## Added at 2025-07-05
 
 - [ ] Using GitHub workflows to build and publish

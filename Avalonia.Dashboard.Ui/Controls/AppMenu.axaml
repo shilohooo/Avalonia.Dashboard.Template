@@ -39,6 +39,8 @@
                             Padding="4,8"
                             HorizontalAlignment="Stretch"
                             Classes.active="{Binding IsActive}"
+                            Command="{Binding DataContext.NavigateCommand, ElementName=AppMenuControl, FallbackValue=null}"
+                            CommandParameter="{Binding}"
                             ToolTip.Tip="{Binding Title}"
                             >
                             <Button.Styles>

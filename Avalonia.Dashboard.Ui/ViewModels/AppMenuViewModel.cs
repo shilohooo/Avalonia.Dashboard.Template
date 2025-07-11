@@ -3,6 +3,7 @@ using Avalonia.Dashboard.Abstractions.Services.I18n;
 using Avalonia.Dashboard.Abstractions.Services.Ui;
 using Avalonia.Dashboard.Ui.Assets.I18n;
 using Avalonia.Dashboard.Ui.Messages;
+using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 
 namespace Avalonia.Dashboard.Ui.ViewModels;
@@ -10,7 +11,7 @@ namespace Avalonia.Dashboard.Ui.ViewModels;
 /// <summary>
 ///     view model of <see cref="Avalonia.Dashboard.Ui.Controls.AppMenu" />
 /// </summary>
-public class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMenusChangedMessage>
+public partial class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMenusChangedMessage>
 {
     private readonly ILocalizationService _localizationService;
     private readonly INavigationService _navigationService;
@@ -37,14 +38,39 @@ public class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMenusChang
             return;
         }
 
-        var firstMenu = message.Value[0];
-        firstMenu.IsActive = true;
         Menus.Clear();
-        foreach (var menuItemViewModel in message.Value) Menus.Add(menuItemViewModel);
+        foreach (var menuItemViewModel in message.Value)
+        {
+            menuItemViewModel.IsActive = false;
+            Menus.Add(menuItemViewModel);
+        }
 
         // navigate to first sub menu
+        var firstMenu = message.Value[0];
+        firstMenu.IsActive = true;
         _navigationService.NavigateTo(firstMenu.ViewName);
     }
+
+    #region Commands
+
+    [RelayCommand]
+    private void Navigate(MenuItemViewModel? clickMenu)
+    {
+        if (clickMenu is null || clickMenu.IsActive) return;
+
+        clickMenu.IsActive = true;
+
+        foreach (var menuItemViewModel in Menus)
+        {
+            if (menuItemViewModel == clickMenu) continue;
+
+            menuItemViewModel.IsActive = false;
+        }
+
+        _navigationService.NavigateTo(clickMenu.ViewName);
+    }
+
+    #endregion
 
     #region Constructors
 

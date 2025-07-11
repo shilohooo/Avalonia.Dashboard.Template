@@ -5,12 +5,12 @@
     "children": [
       {
         "title": "OverviewMenuTitle",
-        "icon": "Home",
+        "icon": "OverviewRounded",
         "viewName": "Home"
       },
       {
         "title": "WorkspaceMenuTitle",
-        "icon": "Home",
+        "icon": "ViewAppsRounded",
         "viewName": "Workspace"
       }
     ]
@@ -26,7 +26,7 @@
       },
       {
         "title": "BugReportMenuTitle",
-        "icon": "InfoRounded",
+        "icon": "BugReportRounded",
         "viewName": "BugReport"
       }
     ]
