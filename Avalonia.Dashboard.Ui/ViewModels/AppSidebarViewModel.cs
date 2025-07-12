@@ -91,11 +91,8 @@ public partial class AppSidebarViewModel : RecipientViewModelBase, IRecipient<Th
         clickMenu.IsActive = true;
 
         foreach (var menuItemViewModel in Menus)
-        {
-            if (menuItemViewModel == clickMenu) continue;
-
-            menuItemViewModel.IsActive = false;
-        }
+            menuItemViewModel.IsActive =
+                menuItemViewModel.Title.Equals(clickMenu.Title, StringComparison.CurrentCulture);
 
         _messenger.Send(new SubMenusChangedMessage(clickMenu.Children));
     }

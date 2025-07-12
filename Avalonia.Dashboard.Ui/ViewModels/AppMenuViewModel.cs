@@ -39,16 +39,16 @@ public partial class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMe
         }
 
         Menus.Clear();
+        var menuToNavigate = message.Value.FirstOrDefault(item => item.IsActive, message.Value[0]);
         foreach (var menuItemViewModel in message.Value)
         {
-            menuItemViewModel.IsActive = false;
+            menuItemViewModel.IsActive =
+                menuItemViewModel.Title.Equals(menuToNavigate.Title, StringComparison.CurrentCulture);
             Menus.Add(menuItemViewModel);
         }
 
         // navigate to first sub menu
-        var firstMenu = message.Value[0];
-        firstMenu.IsActive = true;
-        _navigationService.NavigateTo(firstMenu.ViewName);
+        _navigationService.NavigateTo(menuToNavigate.ViewName);
     }
 
     #region Commands

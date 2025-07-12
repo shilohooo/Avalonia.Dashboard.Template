@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Globalization;
+﻿using System.Globalization;
 using Avalonia.Data.Converters;
 
 namespace Avalonia.Dashboard.Ui.Converters;
@@ -12,10 +11,7 @@ public class SvgIconPathConverters : IValueConverter
     /// <inheritdoc />
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        Debug.WriteLine($"SvgIconPathConverters.Convert - {value}, {targetType}, {parameter}, {culture}");
-        var iconPath = value is not string iconName ? null : $"/Assets/Icons/MaterialSymbols/{iconName}.svg";
-        Debug.WriteLine($"SvgIconPathConverters.Convert Result - {iconPath}");
-        return iconPath;
+        return value is not string iconName ? null : $"/Assets/Icons/MaterialSymbols/{iconName}.svg";
     }
 
     /// <inheritdoc />
