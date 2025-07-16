@@ -16,6 +16,8 @@ public static class CustomAppBuilderExtension
         var host = Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
+                services.AddAppConfiguration();
+
                 services.AddServices();
 
                 services.AddViewModels<ViewModelBase>();
@@ -29,7 +31,6 @@ public static class CustomAppBuilderExtension
         return AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
-            
             .LogToTrace();
     }
 }

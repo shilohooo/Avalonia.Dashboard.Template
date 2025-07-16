@@ -1,8 +1,6 @@
 ﻿using System.Reflection;
 using Avalonia.Dashboard.Abstractions.Factories;
-using Avalonia.Dashboard.Abstractions.Services.I18n;
 using Avalonia.Dashboard.Ui.Factories;
-using Avalonia.Dashboard.Ui.Services.I18n;
 using Avalonia.Dashboard.Ui.Views;
 using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.DependencyInjection;
