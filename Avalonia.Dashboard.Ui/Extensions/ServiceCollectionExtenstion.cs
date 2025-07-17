@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Avalonia.Dashboard.Abstractions.Factories;
+using Avalonia.Dashboard.Common.Constants;
 using Avalonia.Dashboard.Ui.Factories;
 using Avalonia.Dashboard.Ui.Views;
 using CommunityToolkit.Mvvm.Messaging;
@@ -20,7 +21,8 @@ public static class ServiceCollectionExtenstion
     {
         var serviceTypes = Assembly.GetAssembly(typeof(MainWindow))!
             .GetTypes()
-            .Where(t => t is { IsClass: true, IsAbstract: false } && t.FullName!.EndsWith("Service"))
+            .Where(t => t is { IsClass: true, IsAbstract: false } &&
+                        t.FullName!.EndsWith(GlobalConstants.ServiceClassNameSuffix))
             .ToList();
         foreach (var serviceType in serviceTypes)
         {
@@ -63,7 +65,8 @@ public static class ServiceCollectionExtenstion
     {
         var viewTypes = Assembly.GetAssembly(typeof(MainWindow))!
             .GetTypes()
-            .Where(t => t is { IsClass: true, IsAbstract: false } && t.FullName!.EndsWith("View"))
+            .Where(t => t is { IsClass: true, IsAbstract: false } &&
+                        t.FullName!.EndsWith(GlobalConstants.ViewControlClassNameSuffix))
             .ToList();
         foreach (var viewType in viewTypes) serviceCollection.AddTransient(viewType);
     }
