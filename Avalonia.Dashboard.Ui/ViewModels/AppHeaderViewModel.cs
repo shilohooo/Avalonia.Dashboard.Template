@@ -1,10 +1,12 @@
-﻿using Avalonia.Dashboard.Abstractions.Services.I18n;
+﻿using Avalonia.Dashboard.Abstractions.Services;
+using Avalonia.Dashboard.Abstractions.Services.I18n;
 using Avalonia.Dashboard.Abstractions.Services.Ui;
 using Avalonia.Dashboard.Ui.Assets.I18n;
 using Avalonia.Dashboard.Ui.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using Microsoft.Extensions.Configuration;
 
 namespace Avalonia.Dashboard.Ui.ViewModels;
 
@@ -15,6 +17,8 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
     IRecipient<ThemeChangedMessage>,
     IRecipient<MainWindowStateChangedMessage>
 {
+    private readonly IBrowserService _browserService;
+    private readonly IConfiguration _configuration;
     private readonly ILocalizationService _localizationService;
     private readonly IMainWindowService? _mainWindowService;
 
@@ -29,7 +33,7 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
     public string MaximizeToggleButtonIcon => IsMaximized ? "FullscreenExitRounded" : "FullscreenRounded";
 
     /// <summary>
-    /// 应用名称
+    ///     应用名称
     /// </summary>
     public string AppName => _localizationService[nameof(Resources.AppName)];
 
@@ -51,8 +55,11 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
     {
     }
 
-    public AppHeaderViewModel(IMainWindowService mainWindowService, ILocalizationService localizationService)
+    public AppHeaderViewModel(IConfiguration configuration, IBrowserService browserService,
+        IMainWindowService mainWindowService, ILocalizationService localizationService)
     {
+        _configuration = configuration;
+        _browserService = browserService;
         _mainWindowService = mainWindowService;
         _localizationService = localizationService;
     }
@@ -60,6 +67,18 @@ public partial class AppHeaderViewModel : RecipientViewModelBase,
     #endregion
 
     #region Commands
+
+    [RelayCommand]
+    private void OpenProjectPage()
+    {
+        _browserService.OpenPage(_configuration["Links:Repository"]);
+    }
+
+    [RelayCommand]
+    private void OpenBugReportPage()
+    {
+        _browserService.OpenPage(_configuration["Links:BugReport"]);
+    }
 
     [RelayCommand]
     private void Minimize()
