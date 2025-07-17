@@ -10,39 +10,29 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vm:AppSidebarViewModel"
-    mc:Ignorable="d"
-    >
+    mc:Ignorable="d">
     <Design.DataContext>
         <vm:AppSidebarViewModel />
     </Design.DataContext>
 
     <Border
+        MinWidth="80"
         Padding="4"
         Background="{DynamicResource SidebarBgColor}"
         BorderBrush="{DynamicResource SidebarBorderColor}"
-        BorderThickness="0,0,1,0"
-        >
-        <DockPanel LastChildFill="True">
+        BorderThickness="0,0,1,0">
+        <DockPanel HorizontalAlignment="Center" LastChildFill="True">
             <!--  Toggle button  -->
             <Button
                 HorizontalAlignment="Center"
                 Background="Transparent"
                 Command="{Binding ToggleSidebarCommand}"
-                DockPanel.Dock="Top"
-                >
-                <controls:SvgIcon
-                    Width="24"
-                    Height="24"
-                    IconName="MenuRounded"
-                    />
+                DockPanel.Dock="Top">
+                <controls:SvgIcon Width="24" Height="24" IconName="MenuRounded" />
             </Button>
 
             <!--  Toolbar  -->
-            <Button
-                HorizontalAlignment="Center"
-                Background="Transparent"
-                DockPanel.Dock="Bottom"
-                >
+            <Button HorizontalAlignment="Center" Background="Transparent" DockPanel.Dock="Bottom">
                 <Button.Styles>
                     <!--  menu items style  -->
                     <Style Selector="MenuItem">
@@ -55,33 +45,28 @@
                     </Style>
                 </Button.Styles>
                 <Button.Flyout>
-                    <MenuFlyout
-                        HorizontalOffset="0"
-                        ItemsSource=""
-                        Placement="Top"
-                        >
+                    <MenuFlyout HorizontalOffset="0" ItemsSource="" Placement="Top">
                         <MenuItem Header="{Binding ThemesButtonText}">
                             <MenuItem
                                 Classes.checked="{Binding !IsDarkMode}"
                                 Command="{Binding ToggleThemeCommand}"
                                 CommandParameter="{x:Static x:Boolean.FalseString}"
-                                Header="{Binding LightThemeName}"
-                                >
+                                Header="{Binding LightThemeName}">
                                 <MenuItem.Icon>
-                                    <controls:SvgIcon Classes.checked="{Binding !IsDarkMode}" IconName="LightModeRounded" />
+                                    <controls:SvgIcon Classes.checked="{Binding !IsDarkMode}"
+                                                      IconName="LightModeRounded" />
                                 </MenuItem.Icon>
                             </MenuItem>
                             <MenuItem
                                 Classes.checked="{Binding IsDarkMode}"
                                 Command="{Binding ToggleThemeCommand}"
                                 CommandParameter="{x:Static x:Boolean.TrueString}"
-                                Header="{Binding DarkThemeName}"
-                                >
+                                Header="{Binding DarkThemeName}">
                                 <MenuItem.Icon>
-                                    <controls:SvgIcon Classes.checked="{Binding !IsDarkMode}" IconName="DarkModeRounded" />
+                                    <controls:SvgIcon Classes.checked="{Binding !IsDarkMode}"
+                                                      IconName="DarkModeRounded" />
                                 </MenuItem.Icon>
                             </MenuItem>
-
                             <MenuItem.Icon>
                                 <controls:SvgIcon IconName="Palette" />
                             </MenuItem.Icon>
@@ -91,15 +76,13 @@
                                 Classes.checked="{Binding CurrentCultureName, Converter={StaticResource EqualToBooleanConverter}, ConverterParameter='zh-CN'}"
                                 Command="{Binding ChangeLanguageCommand}"
                                 CommandParameter="zh-CN"
-                                Header="简体中文"
-                                />
+                                Header="简体中文" />
                             <MenuItem
                                 Classes.checked="{Binding CurrentCultureName, Converter={StaticResource EqualToBooleanConverter}, ConverterParameter='en-US'}"
                                 Command="{Binding ChangeLanguageCommand}"
                                 CommandParameter="en-US"
                                 Header="English"
-                                Tag="en-US"
-                                />
+                                Tag="en-US" />
 
                             <MenuItem.Icon>
                                 <controls:SvgIcon IconName="TranslateRounded" />
@@ -114,11 +97,7 @@
                     </MenuFlyout>
                 </Button.Flyout>
 
-                <controls:SvgIcon
-                    Width="24"
-                    Height="24"
-                    IconName="SettingsRounded"
-                    />
+                <controls:SvgIcon Width="24" Height="24" IconName="SettingsRounded" />
             </Button>
 
             <!--  Sidebar  -->
@@ -126,8 +105,7 @@
                 Margin="0,10,0,10"
                 Padding="4"
                 Background="Transparent"
-                ItemsSource="{Binding Menus}"
-                >
+                ItemsSource="{Binding Menus}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button
@@ -136,8 +114,7 @@
                             Classes.active="{Binding IsActive}"
                             Command="{Binding DataContext.NavigateCommand, ElementName=AppSidebarControl, FallbackValue=null}"
                             CommandParameter="{Binding}"
-                            ToolTip.Tip="{Binding Title}"
-                            >
+                            ToolTip.Tip="{Binding Title}">
                             <Button.Styles>
                                 <Style Selector="Button">
                                     <Setter Property="Background" Value="Transparent" />
@@ -147,17 +124,12 @@
                                 </Style>
                             </Button.Styles>
                             <StackPanel>
-                                <controls:SvgIcon
-                                    Width="24"
-                                    Height="24"
-                                    IconName="{Binding Icon}"
-                                    />
+                                <controls:SvgIcon Width="24" Height="24" IconName="{Binding Icon}" />
                                 <TextBlock
                                     Margin="0,4,0,0"
                                     HorizontalAlignment="Center"
                                     Text="{Binding Title}"
-                                    TextTrimming="CharacterEllipsis"
-                                    />
+                                    TextTrimming="CharacterEllipsis" />
                             </StackPanel>
                         </Button>
                     </DataTemplate>
