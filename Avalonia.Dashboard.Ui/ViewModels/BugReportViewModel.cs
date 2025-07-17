@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using Avalonia.Dashboard.Abstractions.Services;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Configuration;
 
@@ -7,7 +7,7 @@ namespace Avalonia.Dashboard.Ui.ViewModels;
 /// <summary>
 ///     View model of <see cref="Views.BugReportView" />
 /// </summary>
-public partial class BugReportViewModel(IConfiguration configuration) : ViewModelBase
+public partial class BugReportViewModel(IConfiguration configuration, IBrowserService browserService) : ViewModelBase
 {
     private string BugReportUrl => configuration["Links:BugReport"]!;
 
@@ -19,11 +19,7 @@ public partial class BugReportViewModel(IConfiguration configuration) : ViewMode
     [RelayCommand]
     private void OpenBugReportPage()
     {
-        Process.Start(new ProcessStartInfo
-        {
-            FileName = BugReportUrl,
-            UseShellExecute = true
-        });
+        browserService.OpenPage(BugReportUrl);
     }
 
     #endregion
