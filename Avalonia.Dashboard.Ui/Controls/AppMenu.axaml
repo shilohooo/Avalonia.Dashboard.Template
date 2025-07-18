@@ -23,7 +23,22 @@
         BorderThickness="0,0,1,0"
         >
         <StackPanel Spacing="10">
-            <TextBox Watermark="{Binding MenuSearchPlaceholder}" />
+            <TextBox Text="{Binding SearchVal, UpdateSourceTrigger=PropertyChanged}" Watermark="{Binding MenuSearchPlaceholder}">
+                <TextBox.InnerRightContent>
+                    <Button
+                        Margin="4"
+                        Background="Transparent"
+                        Command="{Binding ClearSearchValCommand}"
+                        IsVisible="{Binding SearchVal, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                        >
+                        <controls:SvgIcon
+                            Width="8"
+                            Height="8"
+                            IconName="CloseSmallRounded"
+                            />
+                    </Button>
+                </TextBox.InnerRightContent>
+            </TextBox>
 
             <!--  Sub Menus  -->
             <ItemsControl

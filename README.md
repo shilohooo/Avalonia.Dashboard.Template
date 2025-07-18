@@ -27,14 +27,15 @@ Just enjoy it:)
 
 ## 💻 Stack
 
-|                   Name                   |          Version           |                                    Docs                                    | Remark                                                                                                                               |
-|:----------------------------------------:|:--------------------------:|:--------------------------------------------------------------------------:|--------------------------------------------------------------------------------------------------------------------------------------|
+|                   Name                   |          Version           |                                    Docs                                    |                                                                Remark                                                                |
+|:----------------------------------------:|:--------------------------:|:--------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------:|
 |                   .NET                   |            8.0             |                   <https://dotnet.microsoft.com/en-us/>                    |                                                                                                                                      |
 |                 Avalonia                 |           11.3.1           |                       <https://docs.avaloniaui.net/>                       |                                                                                                                                      |
 |          CommunityToolkit.Mvvm           |           8.2.1            |     <https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/>      |                                                                                                                                      |
 |               HotAvalonia                |           3.0.0            |                  <https://github.com/Kira-NT/HotAvalonia>                  |                                                                                                                                      |
 | Microsoft.Extensions.DependencyInjection | 10.0.0-preview.5.25277.114 | <https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/> |                                                                                                                                      |
 |       Microsoft.Extensions.Hosting       | 10.0.0-preview.5.25277.114 |       <https://www.nuget.org/packages/Microsoft.Extensions.Hosting>        |                                                                                                                                      |
+|             System Reactive              |           6.0.1            |                    <https://github.com/dotnet/reactive>                    |                                                         For throttling only                                                          |
 |        Svg.Controls.Skia.Avalonia        |          11.3.0.1          |                <https://github.com/wieslawsoltes/Svg.Skia>                 | All svg icons are from iconify, see <https://icon-sets.iconify.design/material-symbols/> and <https://icon-sets.iconify.design/mdi/> |
 
 ## 💪 Contributors

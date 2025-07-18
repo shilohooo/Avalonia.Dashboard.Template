@@ -1,8 +1,13 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using Avalonia.Dashboard.Abstractions.Services.I18n;
 using Avalonia.Dashboard.Abstractions.Services.Ui;
 using Avalonia.Dashboard.Ui.Assets.I18n;
 using Avalonia.Dashboard.Ui.Messages;
+using Avalonia.Threading;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 
@@ -15,11 +20,23 @@ public partial class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMe
 {
     private readonly ILocalizationService _localizationService;
     private readonly INavigationService _navigationService;
+    private readonly Subject<string> _searchValChanged = new();
+
+    #region Observable Properties
+
+    [ObservableProperty] private string? _searchVal;
+
+    #endregion
 
     /// <summary>
     ///     Menu search placeholder
     /// </summary>
     public string MenuSearchPlaceholder => _localizationService[nameof(Resources.MenuSearchPlaceholder)];
+
+    /// <summary>
+    ///     Sub menus filter source
+    /// </summary>
+    public ObservableCollection<MenuItemViewModel> MenuSources { get; set; } = [];
 
     /// <summary>
     ///     Sub menus
@@ -34,22 +51,49 @@ public partial class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMe
     {
         if (message.Value.Count == 0)
         {
+            MenuSources = [];
             Menus = [];
             return;
         }
 
-        Menus.Clear();
+        MenuSources.Clear();
         var menuToNavigate = message.Value.FirstOrDefault(item => item.IsActive, message.Value[0]);
         foreach (var menuItemViewModel in message.Value)
         {
             menuItemViewModel.IsActive =
                 menuItemViewModel.Title.Equals(menuToNavigate.Title, StringComparison.CurrentCulture);
-            Menus.Add(menuItemViewModel);
+            MenuSources.Add(menuItemViewModel);
         }
+
+        Menus.Clear();
+        foreach (var menuSource in MenuSources) Menus.Add(menuSource);
 
         // navigate to first sub menu
         _navigationService.NavigateTo(menuToNavigate.ViewName);
     }
+
+    private void OnSearch(string newVal)
+    {
+        Debug.WriteLine($"search val changed: {newVal}");
+        var filteredMenus = string.IsNullOrWhiteSpace(newVal)
+            ? MenuSources
+            : MenuSources.Where(menu => menu.Title.Contains(newVal, StringComparison.OrdinalIgnoreCase));
+
+        Dispatcher.UIThread.Post(() =>
+        {
+            Menus.Clear();
+            foreach (var menu in filteredMenus) Menus.Add(menu);
+        });
+    }
+
+    #region Partial Methods
+
+    partial void OnSearchValChanged(string? value)
+    {
+        _searchValChanged.OnNext(value ?? string.Empty);
+    }
+
+    #endregion
 
     #region Commands
 
@@ -60,7 +104,7 @@ public partial class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMe
 
         clickMenu.IsActive = true;
 
-        foreach (var menuItemViewModel in Menus)
+        foreach (var menuItemViewModel in MenuSources)
         {
             if (menuItemViewModel == clickMenu) continue;
 
@@ -68,6 +112,12 @@ public partial class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMe
         }
 
         _navigationService.NavigateTo(clickMenu.ViewName);
+    }
+
+    [RelayCommand]
+    private void ClearSearchVal()
+    {
+        SearchVal = string.Empty;
     }
 
     #endregion
@@ -84,6 +134,9 @@ public partial class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMe
     {
         _localizationService = localizationService;
         _navigationService = navigationService;
+        _searchValChanged.Throttle(TimeSpan.FromMilliseconds(300))
+            .DistinctUntilChanged()
+            .Subscribe(OnSearch);
     }
 
     #endregion
