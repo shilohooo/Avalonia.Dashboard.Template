@@ -1,9 +1,20 @@
 ﻿# TODO
 
+## Added at 2025-08-02
+
+- [ ] Workspace page content
+  - [ ] User profile
+  - [ ] Todo list
+  - [ ] Calendar
+  - [ ] Team activity
+
 ## Added at 2025-07-11
 
-- [ ] Using LiveCharts2 to display some chart data on the overview page
-- [ ] Add a feedback link to the bug report page
+- [ ] Using [LiveCharts2](https://livecharts.dev/) to display some chart data on the overview page
+  - [x] GitHub repo star history - Line graph
+  - [ ] GitHub stats - DataGrid + Pie graph
+  - [x] Most used languages - Pie graph
+- [x] Add a feedback link to the bug report page
 
 ## Added at 2025-07-05
 

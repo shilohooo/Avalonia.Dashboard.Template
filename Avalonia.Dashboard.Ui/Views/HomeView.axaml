@@ -3,6 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
     d:DesignHeight="450"
@@ -13,5 +14,49 @@
     <Design.DataContext>
         <vm:HomeViewModel />
     </Design.DataContext>
-    <TextBlock Text="{Binding Title}" />
+    <Grid
+        ColumnDefinitions="* *"
+        ColumnSpacing="24"
+        RowDefinitions="* *"
+        >
+        <Border
+            Grid.Row="0"
+            Grid.Column="0"
+            Padding="12"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="8"
+            >
+            <StackPanel Spacing="12">
+                <TextBlock FontSize="24" Text="GitHub Repo Star History" />
+                <lvc:CartesianChart
+                    Height="300"
+                    LegendPosition="Top"
+                    LegendTextPaint="{Binding LegendTextPain}"
+                    Series="{Binding StarHistorySeries}"
+                    XAxes="{Binding StarHistoryXAxes}"
+                    YAxes="{Binding StarHistoryYAxes}"
+                    />
+            </StackPanel>
+        </Border>
+
+        <Border
+            Grid.Row="0"
+            Grid.Column="1"
+            Padding="12"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="8"
+            >
+            <StackPanel Spacing="12">
+                <TextBlock FontSize="24" Text="Most Used Languages" />
+                <lvc:PieChart
+                    Height="300"
+                    LegendPosition="Top"
+                    LegendTextPaint="{Binding LegendTextPain}"
+                    Series="{Binding MostUsedLanguagesSeries}"
+                    />
+            </StackPanel>
+        </Border>
+    </Grid>
 </UserControl>

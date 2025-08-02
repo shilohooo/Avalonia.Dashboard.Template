@@ -8,6 +8,9 @@ using Avalonia.Dashboard.Ui.Views;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Diagnostics;
 using Avalonia.Markup.Xaml;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using SkiaSharp;
 
 namespace Avalonia.Dashboard.App;
 
@@ -16,6 +19,16 @@ public class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+        // customize LiveCharts
+        LiveCharts.Configure(config =>
+        {
+            config
+                .AddDarkTheme()
+                .AddLightTheme()
+                // Chinese font
+                .HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('汉'))
+                .UseRightToLeftSettings();
+        });
     }
 
     public override void OnFrameworkInitializationCompleted()

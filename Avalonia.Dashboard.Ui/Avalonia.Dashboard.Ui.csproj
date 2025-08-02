@@ -11,6 +11,7 @@
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.1"/>
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.1"/>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1"/>
+        <PackageReference Include="LiveChartsCore.SkiaSharpView.Avalonia" Version="2.0.0-rc5.4"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0-preview.5.25277.114"/>
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.0-preview.5.25277.114"/>
         <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="11.3.0.1"/>
