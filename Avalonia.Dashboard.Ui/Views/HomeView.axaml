@@ -2,6 +2,7 @@
     x:Class="Avalonia.Dashboard.Ui.Views.HomeView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -14,49 +15,213 @@
     <Design.DataContext>
         <vm:HomeViewModel />
     </Design.DataContext>
-    <Grid
-        ColumnDefinitions="* *"
-        ColumnSpacing="24"
-        RowDefinitions="* *"
-        >
-        <Border
-            Grid.Row="0"
-            Grid.Column="0"
-            Padding="12"
-            BorderBrush="Gray"
-            BorderThickness="1"
-            CornerRadius="8"
+    <StackPanel Spacing="20">
+        <Grid
+            ColumnDefinitions="* *"
+            ColumnSpacing="24"
+            RowDefinitions="* *"
             >
-            <StackPanel Spacing="12">
-                <TextBlock FontSize="24" Text="GitHub Repo Star History" />
-                <lvc:CartesianChart
-                    Height="300"
-                    LegendPosition="Top"
-                    LegendTextPaint="{Binding LegendTextPain}"
-                    Series="{Binding StarHistorySeries}"
-                    XAxes="{Binding StarHistoryXAxes}"
-                    YAxes="{Binding StarHistoryYAxes}"
-                    />
-            </StackPanel>
-        </Border>
+            <Border
+                Grid.Row="0"
+                Grid.Column="0"
+                Padding="12"
+                BorderBrush="Gray"
+                BorderThickness="1"
+                CornerRadius="8"
+                >
+                <StackPanel Spacing="12">
+                    <TextBlock
+                        FontSize="24"
+                        FontWeight="Bold"
+                        Text="GitHub Repo Star History"
+                        />
+                    <lvc:CartesianChart
+                        Height="300"
+                        LegendPosition="Top"
+                        LegendTextPaint="{Binding LegendTextPain}"
+                        Series="{Binding StarHistorySeries}"
+                        XAxes="{Binding StarHistoryXAxes}"
+                        YAxes="{Binding StarHistoryYAxes}"
+                        />
+                </StackPanel>
+            </Border>
+
+            <Border
+                Grid.Row="0"
+                Grid.Column="1"
+                Padding="12"
+                BorderBrush="Gray"
+                BorderThickness="1"
+                CornerRadius="8"
+                >
+                <StackPanel Spacing="12">
+                    <TextBlock
+                        FontSize="24"
+                        FontWeight="Bold"
+                        Text="Most Used Languages"
+                        />
+                    <lvc:PieChart
+                        Height="300"
+                        LegendPosition="Top"
+                        LegendTextPaint="{Binding LegendTextPain}"
+                        Series="{Binding MostUsedLanguagesSeries}"
+                        />
+                </StackPanel>
+            </Border>
+        </Grid>
 
         <Border
-            Grid.Row="0"
-            Grid.Column="1"
             Padding="12"
             BorderBrush="Gray"
             BorderThickness="1"
             CornerRadius="8"
             >
-            <StackPanel Spacing="12">
-                <TextBlock FontSize="24" Text="Most Used Languages" />
-                <lvc:PieChart
-                    Height="300"
-                    LegendPosition="Top"
-                    LegendTextPaint="{Binding LegendTextPain}"
-                    Series="{Binding MostUsedLanguagesSeries}"
+            <StackPanel Spacing="20">
+                <TextBlock
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Text="Shiloh's GitHub Stats"
                     />
+
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="24">
+                    <!--  stats info  -->
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        ColumnDefinitions="Auto, *, Auto"
+                        ColumnSpacing="12"
+                        RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                        RowSpacing="12"
+                        >
+                        <controls:SvgIcon
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            IconHeight="20"
+                            IconName="KidStarOutlineSharp"
+                            IconWidth="20"
+                            />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Text="Total Stars:"
+                            />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            Text="2212"
+                            />
+
+                        <controls:SvgIcon
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            IconHeight="20"
+                            IconName="History"
+                            IconWidth="20"
+                            />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Text="Total Commits:"
+                            />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            Text="1032"
+                            />
+
+                        <controls:SvgIcon
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            IconHeight="20"
+                            IconName="SourcePull"
+                            IconWidth="20"
+                            />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Text="Total PRs:"
+                            />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            Text="233"
+                            />
+
+                        <controls:SvgIcon
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            IconHeight="20"
+                            IconName="AlertCircleOutline"
+                            IconWidth="20"
+                            />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Text="Total Issues:"
+                            />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            Text="86"
+                            />
+
+                        <controls:SvgIcon
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            IconHeight="20"
+                            IconName="ArmFlexOutline"
+                            IconWidth="20"
+                            />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Text="Contributed to:"
+                            />
+                        <TextBlock
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            Text="63"
+                            />
+                    </Grid>
+
+                    <!--  stats chart  -->
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Height="140"
+                        >
+                        <lvc:PieChart
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            LegendPosition="Hidden"
+                            Series="{Binding StatsSeries}"
+                            />
+
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="24"
+                            FontWeight="Bold"
+                            Text="A++"
+                            />
+                    </Grid>
+                </Grid>
             </StackPanel>
         </Border>
-    </Grid>
+    </StackPanel>
 </UserControl>

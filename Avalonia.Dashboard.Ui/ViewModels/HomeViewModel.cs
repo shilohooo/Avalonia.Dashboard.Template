@@ -71,10 +71,28 @@ public partial class HomeViewModel : RecipientViewModelBase, IRecipient<ThemeCha
         new PieSeries<double> { Values = [10], ToolTipLabelFormatter = ToolTipLabelFormatter, Name = "Python" }
     ];
 
+    public ISeries[] StatsSeries { get; set; } =
+    [
+        new PieSeries<double>
+        {
+            Values = [25],
+            InnerRadius = 60,
+            Fill = new SolidColorPaint(SKColors.Gray),
+            Pushout = 0
+        },
+        new PieSeries<double>
+        {
+            Values = [75],
+            InnerRadius = 60,
+            Fill = new SolidColorPaint(SKColors.LightSkyBlue),
+            Pushout = 0
+        }
+    ];
+
     public void Receive(ThemeChangedMessage message)
     {
         IsDarkMode = message.Value;
-        
+
         StarHistoryXAxes.Clear();
         StarHistoryXAxes.Add(new Axis
         {
@@ -83,7 +101,7 @@ public partial class HomeViewModel : RecipientViewModelBase, IRecipient<ThemeCha
             LabelsPaint = new SolidColorPaint(IsDarkMode ? SKColors.LightGray : SKColors.Black),
             NamePaint = new SolidColorPaint(IsDarkMode ? SKColors.LightGray : SKColors.Black)
         });
-        
+
         StarHistoryYAxes.Clear();
         StarHistoryYAxes.Add(new Axis
         {
