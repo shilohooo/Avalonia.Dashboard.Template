@@ -1,0 +1,122 @@
+<UserControl
+    x:Class="Avalonia.Dashboard.Ui.Controls.Workspace.UserProfile"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Border
+        Padding="12"
+        Background="{DynamicResource WorkspacePageContentBgColor}"
+        CornerRadius="8">
+        <Grid ColumnDefinitions="Auto * Auto" ColumnSpacing="24">
+            <!--  user avatar  -->
+            <Border
+                Height="80"
+                ClipToBounds="True"
+                CornerRadius="40">
+                <Image Source="avares://Avalonia.Dashboard.Ui/Assets/Images/avatar.jpg" Stretch="UniformToFill" />
+            </Border>
+
+            <!--  user info  -->
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="1"
+                Spacing="8">
+                <TextBlock
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Text="Shiloh" />
+
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock FontSize="20" Text="Software developer" />
+                    <TextBlock FontSize="20" Text="@" />
+                    <TextBlock FontSize="20" Text="Your company name" />
+                </StackPanel>
+
+                <Grid ColumnDefinitions="* * *" ColumnSpacing="24">
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Spacing="8">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <controls:SvgIcon
+                                IconColor="{DynamicResource WarningColor}"
+                                IconHeight="24"
+                                IconName="CheckboxOutlineBlank"
+                                IconWidth="24" />
+                            <TextBlock
+                                FontSize="24"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource WarningColor}"
+                                Text="233" />
+                        </StackPanel>
+                        <TextBlock FontSize="20" Text="To-do Tasks" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Spacing="8">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <controls:SvgIcon
+                                IconColor="{DynamicResource PrimaryColor}"
+                                IconHeight="24"
+                                IconName="ToolsPliersWireStripperOutline"
+                                IconWidth="24" />
+                            <TextBlock
+                                FontSize="24"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource PrimaryColor}"
+                                Text="66" />
+                        </StackPanel>
+                        <TextBlock FontSize="20" Text="Ongoing Tasks" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Spacing="8">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <controls:SvgIcon
+                                IconColor="{DynamicResource SuccessColor}"
+                                IconHeight="24"
+                                IconName="CheckboxRounded"
+                                IconWidth="24" />
+                            <TextBlock
+                                FontSize="24"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource SuccessColor}"
+                                Text="138" />
+                        </StackPanel>
+                        <TextBlock FontSize="20" Text="Completed Tasks" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <!--  edit button  -->
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
+                VerticalAlignment="Top">
+                <Button.Styles>
+                    <Style Selector="Button">
+                        <Setter Property="Background" Value="{DynamicResource PrimaryColor}" />
+
+                        <Style Selector="^:pointerover /template/ ContentPresenter">
+                            <Setter Property="Background" Value="{DynamicResource PrimaryHoverColor}" />
+                        </Style>
+                    </Style>
+                </Button.Styles>
+                <controls:SvgIcon
+                    Width="24"
+                    Height="24"
+                    IconColor="White"
+                    IconName="PersonEditOutline" />
+            </Button>
+        </Grid>
+    </Border>
+</UserControl>

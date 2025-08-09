@@ -15,6 +15,9 @@
             <SolidColorBrush x:Key="ErrorHoverColor" Color="#DC2626" />
             <SolidColorBrush x:Key="InfoHoverColor" Color="#0284C7" />
 
+            <!--  Default svg icon color  -->
+            <SolidColorBrush x:Key="DefaultSvgIconColor" Color="Black" />
+
             <!--  Header 背景色  -->
             <SolidColorBrush x:Key="HeaderBgColor" Color="#F5F5F6" />
             <!--  侧边栏背景色  -->
@@ -29,7 +32,7 @@
             <SolidColorBrush x:Key="ThemeSwitchButtonHoverBgColor" Color="#DDDDDE" />
 
             <!--  工作台页面内容区域背景色  -->
-            <SolidColorBrush x:Key="WorkspacePageContentBgColor" Color="#F8F9FA" />
+            <SolidColorBrush x:Key="WorkspacePageContentBgColor" Color="#F5F5F6" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

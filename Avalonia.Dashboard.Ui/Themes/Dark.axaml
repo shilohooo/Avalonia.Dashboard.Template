@@ -15,6 +15,9 @@
             <SolidColorBrush x:Key="ErrorHoverColor" Color="#FCA5A5" />
             <SolidColorBrush x:Key="InfoHoverColor" Color="#7DD3FC" />
 
+            <!--  Default svg icon color  -->
+            <SolidColorBrush x:Key="DefaultSvgIconColor" Color="White" />
+
             <!--  Header 背景色  -->
             <SolidColorBrush x:Key="HeaderBgColor" Color="#222226" />
             <!--  侧边栏背景色  -->

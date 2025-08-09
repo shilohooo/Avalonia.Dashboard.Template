@@ -1,19 +1,20 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
-    xmlns:converters="clr-namespace:Avalonia.Dashboard.Ui.Converters"
-    xmlns:system="clr-namespace:System;assembly=System.Runtime"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:converters="clr-namespace:Avalonia.Dashboard.Ui.Converters">
     <Design.PreviewWith>
         <TabControl>
             <TabItem Header="Dark">
                 <ThemeVariantScope RequestedThemeVariant="Dark">
-                    <controls:SvgIcon IconName="Home" />
+                    <Border Background="LightSkyBlue">
+                        <controls:SvgIcon IconColor="#099323" IconName="Home" />
+                    </Border>
                 </ThemeVariantScope>
             </TabItem>
             <TabItem Header="Light">
                 <ThemeVariantScope RequestedThemeVariant="Light">
-                    <Border Background="White">
+                    <Border Background="#FFFFFF">
                         <controls:SvgIcon IconName="Home" />
                     </Border>
                 </ThemeVariantScope>
@@ -21,28 +22,22 @@
         </TabControl>
     </Design.PreviewWith>
 
-    <ResourceDictionary.ThemeDictionaries>
-        <ResourceDictionary x:Key="Light">
-            <system:String x:Key="SvgIconCss">path { fill: #000000 }</system:String>
-        </ResourceDictionary>
-
-        <ResourceDictionary x:Key="Dark">
-            <system:String x:Key="SvgIconCss">path { fill: #FFFFFF }</system:String>
-        </ResourceDictionary>
-    </ResourceDictionary.ThemeDictionaries>
-
-    <ControlTheme TargetType="controls:SvgIcon" x:Key="{x:Type controls:SvgIcon}">
+    <ControlTheme x:Key="{x:Type controls:SvgIcon}" TargetType="controls:SvgIcon">
         <ControlTheme.Resources>
             <converters:SvgIconPathConverters x:Key="SvgIconPathConverters" />
+            <converters:SvgColorConverter x:Key="SvgColorConverter" />
         </ControlTheme.Resources>
+
+        <!--  The default icon color can be modified by setting the IconColor styled property  -->
+        <Setter Property="IconColor" Value="{DynamicResource DefaultSvgIconColor}" />
 
         <Setter Property="Template">
             <ControlTemplate>
                 <Svg
-                    Css="{DynamicResource SvgIconCss}"
+                    Width="{TemplateBinding IconWidth}"
                     Height="{TemplateBinding IconHeight}"
-                    Path="{Binding IconName, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource SvgIconPathConverters}}"
-                    Width="{TemplateBinding IconWidth}" />
+                    Css="{Binding IconColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource SvgColorConverter}}"
+                    Path="{Binding IconName, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource SvgIconPathConverters}}" />
             </ControlTemplate>
         </Setter>
     </ControlTheme>

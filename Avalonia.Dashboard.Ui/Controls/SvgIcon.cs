@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls.Primitives;
+using Avalonia.Media;
 
 namespace Avalonia.Dashboard.Ui.Controls;
 
@@ -15,6 +16,15 @@ public class SvgIcon : TemplatedControl
 
     public static readonly StyledProperty<double> IconHeightProperty = AvaloniaProperty.Register<SvgIcon, double>(
         nameof(IconHeight), 24);
+
+    public static readonly StyledProperty<IBrush?> IconColorProperty = AvaloniaProperty.Register<SvgIcon, IBrush?>(
+        nameof(IconColor));
+
+    public IBrush? IconColor
+    {
+        get => GetValue(IconColorProperty);
+        set => SetValue(IconColorProperty, value);
+    }
 
     public string IconName
     {
