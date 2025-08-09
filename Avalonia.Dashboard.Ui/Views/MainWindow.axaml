@@ -1,4 +1,17 @@
 <Window
+    x:Class="Avalonia.Dashboard.Ui.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
+    x:Name="Window"
+    Title="Avalonia.Dashboard.App"
+    Padding="{Binding MainWindowPadding}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
     Background="Transparent"
     BorderBrush="Transparent"
     BorderThickness="0"
@@ -7,23 +20,11 @@
     ExtendClientAreaChromeHints="NoChrome"
     ExtendClientAreaTitleBarHeightHint="-1"
     ExtendClientAreaToDecorationsHint="True"
-    Icon="/Assets/avalonia-logo.ico"
-    Padding="{Binding MainWindowPadding}"
+    Icon="avares://Avalonia.Dashboard.Ui/Assets/avalonia-logo.ico"
     SystemDecorations="Full"
-    Title="Avalonia.Dashboard.App"
     WindowStartupLocation="CenterScreen"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
     mc:Ignorable="d"
-    x:Class="Avalonia.Dashboard.Ui.Views.MainWindow"
-    x:DataType="vm:MainWindowViewModel"
-    x:Name="Window"
-    xmlns="https://github.com/avaloniaui"
-    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    >
 
     <Design.DataContext>
         <!--
@@ -39,24 +40,25 @@
         <controls:AppHeader Grid.Row="0" />
 
         <!--  MainLayout  -->
-        <Grid ColumnDefinitions="Auto, *" Grid.Row="1">
+        <Grid Grid.Row="1" ColumnDefinitions="Auto, *">
             <!--  Sidebar  -->
             <controls:AppSidebar Grid.Column="0" />
 
             <SplitView
+                x:Name="LayoutSplitView"
+                Grid.Column="1"
                 CompactPaneLength="0"
                 DisplayMode="CompactInline"
-                Grid.Column="1"
                 IsPaneOpen="{Binding IsSidebarOpened}"
                 OpenPaneLength="200"
-                x:Name="LayoutSplitView">
+                >
                 <!--  region Sub Menu  -->
                 <SplitView.Pane>
                     <controls:AppMenu />
                 </SplitView.Pane>
 
                 <!--  region Page Content  -->
-                <Border Background="{DynamicResource ContentBgColor}" Padding="12">
+                <Border Padding="12" Background="{DynamicResource ContentBgColor}">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <TransitioningContentControl Content="{Binding CurrentPage}" />
                     </ScrollViewer>

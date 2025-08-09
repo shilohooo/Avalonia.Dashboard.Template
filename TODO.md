@@ -1,5 +1,9 @@
 ﻿# TODO
 
+## Added at 2025-08-09
+
+- [ ] SvgIcon control supports setting the color of svg icon
+
 ## Added at 2025-08-02
 
 - [ ] Workspace page content

@@ -2,6 +2,7 @@
     x:Class="Avalonia.Dashboard.Ui.Views.WorkspaceView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Avalonia.Dashboard.Ui.ViewModels"
@@ -14,5 +15,170 @@
     <Design.DataContext>
         <vm:WorkspaceViewModel />
     </Design.DataContext>
-    Workspace~
+
+    <Border Padding="12">
+        <Grid RowDefinitions="Auto, *" RowSpacing="24">
+            <!--  user profile  -->
+            <Border
+                Grid.Row="0"
+                Grid.Column="0"
+                Padding="12"
+                Background="{DynamicResource WorkspacePageContentBgColor}"
+                CornerRadius="8"
+                >
+                <Grid ColumnDefinitions="Auto * Auto" ColumnSpacing="24">
+                    <!--  user avatar  -->
+                    <Border
+                        Height="80"
+                        BoxShadow="0 2 8 #2222264D"
+                        ClipToBounds="True"
+                        CornerRadius="40"
+                        >
+                        <Image Source="avares://Avalonia.Dashboard.Ui/Assets/Images/avatar.jpg" Stretch="UniformToFill" />
+                    </Border>
+
+                    <!--  user info  -->
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Spacing="8"
+                        >
+                        <TextBlock
+                            FontSize="24"
+                            FontWeight="Bold"
+                            Text="Shiloh"
+                            />
+
+                        <StackPanel Orientation="Horizontal" Spacing="4">
+                            <TextBlock Text="Software developer" />
+                            <TextBlock Text="@" />
+                            <TextBlock Text="Your company name" />
+                        </StackPanel>
+
+                        <Grid ColumnDefinitions="* * *" ColumnSpacing="24">
+                            <StackPanel
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Spacing="8"
+                                >
+                                <TextBlock
+                                    FontSize="24"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource PrimaryColor}"
+                                    Text="233"
+                                    />
+                                <TextBlock Text="To-do Tasks" />
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Spacing="8"
+                                >
+                                <TextBlock
+                                    FontSize="24"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource PrimaryColor}"
+                                    Text="66"
+                                    />
+                                <TextBlock Text="Ongoing Tasks" />
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Spacing="8"
+                                >
+                                <TextBlock
+                                    FontSize="24"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource SuccessColor}"
+                                    Text="165"
+                                    />
+                                <TextBlock Text="Completed Tasks" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                    <!--  edit button  -->
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        VerticalAlignment="Top"
+                        >
+                        <Button.Styles>
+                            <Style Selector="Button">
+                                <Setter Property="Background" Value="{DynamicResource PrimaryColor}" />
+
+                                <Style Selector="^:pointerover /template/ ContentPresenter">
+                                    <Setter Property="Background" Value="{DynamicResource PrimaryHoverColor}" />
+                                </Style>
+                            </Style>
+                        </Button.Styles>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <controls:SvgIcon
+                                Width="24"
+                                Height="24"
+                                IconName="PersonEditOutline"
+                                />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="Edit Profile"
+                                />
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0"
+                ColumnDefinitions="Auto * Auto"
+                ColumnSpacing="24"
+                >
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="12"
+                    Background="{DynamicResource WorkspacePageContentBgColor}"
+                    CornerRadius="8"
+                    >
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="To-do List"
+                        />
+                </Border>
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Padding="12"
+                    Background="{DynamicResource WorkspacePageContentBgColor}"
+                    CornerRadius="8"
+                    >
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="Calendar"
+                        />
+                </Border>
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Padding="12"
+                    Background="{DynamicResource WorkspacePageContentBgColor}"
+                    CornerRadius="8"
+                    >
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="Team activity"
+                        />
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
 </UserControl>

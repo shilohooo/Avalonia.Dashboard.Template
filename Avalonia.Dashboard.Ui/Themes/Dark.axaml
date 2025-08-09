@@ -2,18 +2,34 @@
     <!--  Add Resources Here  -->
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Dark">
+            <!--  App Main Colors  -->
+            <SolidColorBrush x:Key="PrimaryColor" Color="#60A5FA" />
+            <SolidColorBrush x:Key="SuccessColor" Color="#4ADE80" />
+            <SolidColorBrush x:Key="WarningColor" Color="#FBBF24" />
+            <SolidColorBrush x:Key="ErrorColor" Color="#F87171" />
+            <SolidColorBrush x:Key="InfoColor" Color="#38BDF8" />
+            <!--  App Hover Colors  -->
+            <SolidColorBrush x:Key="PrimaryHoverColor" Color="#93C5FD" />
+            <SolidColorBrush x:Key="SuccessHoverColor" Color="#86EFAC" />
+            <SolidColorBrush x:Key="WarningHoverColor" Color="#FCD34D" />
+            <SolidColorBrush x:Key="ErrorHoverColor" Color="#FCA5A5" />
+            <SolidColorBrush x:Key="InfoHoverColor" Color="#7DD3FC" />
+
             <!--  Header 背景色  -->
-            <SolidColorBrush Color="#222226" x:Key="HeaderBgColor" />
+            <SolidColorBrush x:Key="HeaderBgColor" Color="#222226" />
             <!--  侧边栏背景色  -->
-            <SolidColorBrush Color="#222226" x:Key="SidebarBgColor" />
+            <SolidColorBrush x:Key="SidebarBgColor" Color="#222226" />
             <!--  侧边栏边框颜色  -->
-            <SolidColorBrush Color="#343434" x:Key="SidebarBorderColor" />
+            <SolidColorBrush x:Key="SidebarBorderColor" Color="#343434" />
             <!--  内容区域背景色  -->
-            <SolidColorBrush Color="#111113" x:Key="ContentBgColor" />
+            <SolidColorBrush x:Key="ContentBgColor" Color="#111113" />
             <!--  当前菜单项的背景色  -->
-            <SolidColorBrush Color="#38383b" x:Key="SelectedMenuItemBgColor" />
+            <SolidColorBrush x:Key="SelectedMenuItemBgColor" Color="#38383b" />
             <!--  主题切换按钮鼠标悬浮背景色  -->
-            <SolidColorBrush Color="#38383B" x:Key="ThemeSwitchButtonHoverBgColor" />
+            <SolidColorBrush x:Key="ThemeSwitchButtonHoverBgColor" Color="#38383B" />
+
+            <!--  工作台页面内容区域背景色  -->
+            <SolidColorBrush x:Key="WorkspacePageContentBgColor" Color="#222226" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

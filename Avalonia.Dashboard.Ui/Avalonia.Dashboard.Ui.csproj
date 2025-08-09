@@ -45,6 +45,8 @@
         <AvaloniaResource Include="Assets\Icons\MaterialSymbols\LightModeRounded.svg"/>
         <AvaloniaResource Include="Assets\Icons\MaterialSymbols\MenuRounded.svg"/>
         <AvaloniaResource Include="Assets\Icons\MaterialSymbols\SettingsRounded.svg"/>
+        <None Remove="Assets\images\avatar.jpg"/>
+        <AvaloniaResource Include="Assets\Images\avatar.jpg"/>
     </ItemGroup>
 
     <ItemGroup>
