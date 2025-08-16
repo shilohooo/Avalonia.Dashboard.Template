@@ -1,0 +1,126 @@
+<UserControl
+    x:Class="Avalonia.Dashboard.Ui.Controls.Workspace.TodoList"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm-Workspace="clr-namespace:Avalonia.Dashboard.Ui.ViewModels.Workspace"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm-Workspace:TodoListViewModel"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm-Workspace:TodoListViewModel />
+    </Design.DataContext>
+
+    <Border
+        Padding="12"
+        Background="{DynamicResource WorkspacePageContentBgColor}"
+        CornerRadius="8">
+        <DockPanel LastChildFill="True">
+            <TabControl DockPanel.Dock="Top">
+                <TabItem Header="All Tasks" />
+                <TabItem Header="Today" />
+                <TabItem Header="Completed" />
+            </TabControl>
+
+            <!--  add task  -->
+            <Grid
+                Margin="12"
+                ColumnDefinitions="* Auto"
+                ColumnSpacing="12"
+                DockPanel.Dock="Bottom">
+
+                <TextBox
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalContentAlignment="Center"
+                    Watermark="Add new task...">
+                    <TextBox.InnerLeftContent>
+                        <controls:SvgIcon IconName="AddNotesOutline" />
+                    </TextBox.InnerLeftContent>
+                </TextBox>
+
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Background="{DynamicResource PrimaryColor}"
+                    Content="Add"
+                    Foreground="White">
+                    <Button.Styles>
+                        <Style Selector="Button:pointerover /template/ ContentPresenter">
+                            <Setter Property="Background" Value="{DynamicResource PrimaryHoverColor}" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Style>
+                    </Button.Styles>
+                </Button>
+            </Grid>
+
+            <!--  task list  -->
+            <!--  TODO scrollbar  -->
+            <ListBox
+                Margin="8,12"
+                Background="Transparent"
+                DockPanel.Dock="Top"
+                ItemsSource="{Binding TodoItems}">
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Background" Value="{DynamicResource ContentBgColor}" />
+                        <Setter Property="Margin" Value="0 0 0 12" />
+                        <Setter Property="CornerRadius" Value="8" />
+                    </Style>
+                    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="{DynamicResource ContentBgHoverColor}" />
+                    </Style>
+                </ListBox.Styles>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="8">
+                            <Grid
+                                ColumnDefinitions="Auto * Auto"
+                                ColumnSpacing="8"
+                                RowDefinitions="Auto *">
+                                <CheckBox
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    IsChecked="{Binding IsCompleted}" />
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource TextPrimaryColor}"
+                                    Text="{Binding Title}" />
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Orientation="Horizontal"
+                                    Spacing="4">
+
+                                    <controls:SvgIcon
+                                        IconColor="{DynamicResource TextPrimaryColor}"
+                                        IconHeight="16"
+                                        IconName="TimerOutline"
+                                        IconWidth="16" />
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        Foreground="{DynamicResource TextPrimaryColor}"
+                                        Text="{Binding CreateTime, StringFormat=\{0:MM-dd HH:mm\}}" />
+                                </StackPanel>
+
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Foreground="{DynamicResource TextSecondaryColor}"
+                                    Text="{Binding Description}" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+    </Border>
+</UserControl>

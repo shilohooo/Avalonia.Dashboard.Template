@@ -4,16 +4,22 @@
         <ResourceDictionary x:Key="Dark">
             <!--  App Main Colors  -->
             <SolidColorBrush x:Key="PrimaryColor" Color="#60A5FA" />
+            <SolidColorBrush x:Key="SecondaryColor" Color="#9CA3AF" />
             <SolidColorBrush x:Key="SuccessColor" Color="#4ADE80" />
             <SolidColorBrush x:Key="WarningColor" Color="#FBBF24" />
             <SolidColorBrush x:Key="ErrorColor" Color="#F87171" />
             <SolidColorBrush x:Key="InfoColor" Color="#38BDF8" />
             <!--  App Hover Colors  -->
             <SolidColorBrush x:Key="PrimaryHoverColor" Color="#93C5FD" />
+            <SolidColorBrush x:Key="SecondaryHoverColor" Color="#D1D5DB" />
             <SolidColorBrush x:Key="SuccessHoverColor" Color="#86EFAC" />
             <SolidColorBrush x:Key="WarningHoverColor" Color="#FCD34D" />
             <SolidColorBrush x:Key="ErrorHoverColor" Color="#FCA5A5" />
             <SolidColorBrush x:Key="InfoHoverColor" Color="#7DD3FC" />
+
+            <!--  Text Colors  -->
+            <SolidColorBrush x:Key="TextPrimaryColor" Color="#F3F4F6" />
+            <SolidColorBrush x:Key="TextSecondaryColor" Color="#9CA3AF" />
 
             <!--  Default svg icon color  -->
             <SolidColorBrush x:Key="DefaultSvgIconColor" Color="White" />
@@ -26,8 +32,9 @@
             <SolidColorBrush x:Key="SidebarBorderColor" Color="#343434" />
             <!--  内容区域背景色  -->
             <SolidColorBrush x:Key="ContentBgColor" Color="#111113" />
+            <SolidColorBrush x:Key="ContentBgHoverColor" Color="#38383B" />
             <!--  当前菜单项的背景色  -->
-            <SolidColorBrush x:Key="SelectedMenuItemBgColor" Color="#38383b" />
+            <SolidColorBrush x:Key="SelectedMenuItemBgColor" Color="#38383B" />
             <!--  主题切换按钮鼠标悬浮背景色  -->
             <SolidColorBrush x:Key="ThemeSwitchButtonHoverBgColor" Color="#38383B" />
 

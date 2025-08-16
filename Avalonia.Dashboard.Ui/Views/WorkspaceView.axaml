@@ -23,19 +23,9 @@
             <Grid
                 Grid.Row="1"
                 Grid.Column="0"
-                ColumnDefinitions="* 3* 2*"
+                ColumnDefinitions="Auto 2* *"
                 ColumnSpacing="24">
-                <Border
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="12"
-                    Background="{DynamicResource WorkspacePageContentBgColor}"
-                    CornerRadius="8">
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Text="To-do List" />
-                </Border>
+                <workspace:TodoList Grid.Row="0" Grid.Column="0" />
 
                 <Border
                     Grid.Row="0"
