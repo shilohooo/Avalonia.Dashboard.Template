@@ -23,25 +23,14 @@
             <Grid
                 Grid.Row="1"
                 Grid.Column="0"
-                ColumnDefinitions="Auto 2* *"
+                ColumnDefinitions="* *"
                 ColumnSpacing="24">
                 <workspace:TodoList Grid.Row="0" Grid.Column="0" />
+
 
                 <Border
                     Grid.Row="0"
                     Grid.Column="1"
-                    Padding="12"
-                    Background="{DynamicResource WorkspacePageContentBgColor}"
-                    CornerRadius="8">
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Text="Calendar" />
-                </Border>
-
-                <Border
-                    Grid.Row="0"
-                    Grid.Column="2"
                     Padding="12"
                     Background="{DynamicResource WorkspacePageContentBgColor}"
                     CornerRadius="8">

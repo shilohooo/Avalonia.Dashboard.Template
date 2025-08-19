@@ -7,9 +7,9 @@
 ## Added at 2025-08-02
 
 - [ ] Workspace page content
-  - [ ] User profile
-  - [ ] Todo list
-  - [ ] Calendar
+  - [x] User profile
+  - [x] Todo list
+  - [ ] Calendar - I haven't found a good calendar component yet:(
   - [ ] Team activity
 
 ## Added at 2025-07-11
