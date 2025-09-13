@@ -1,5 +1,9 @@
 ﻿# TODO
 
+## Added at 2025-09-10
+
+- [ ] Desktop deployment configuration for Windows, Linux, MacOS
+
 ## Added at 2025-08-09
 
 - [x] SvgIcon control supports setting the color of svg icon
