@@ -10,7 +10,7 @@
 
 - [ ] Desktop deployment configuration
   - [x] Windows
-  - [ ] Linux (Debian/Ubuntu)
+  - [x] Linux (Debian/Ubuntu)
   - [ ] MacOS
 
 ## Added at 2025-08-09

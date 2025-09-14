@@ -53,6 +53,20 @@ dotnet publish -c Release \
 -o D:\MyApp\Release\
 ```
 
+### Linux
+
+```shell
+dotnet publish -c Release \
+# -r linux-armx64
+-r linux-x64 \
+--self-contained true \
+-p:PublishSingleFile=true \
+-p:IncludeNativeLibrariesForSelfExtract=true \
+-p:PublishTrimmed=false \
+-p:UseAppHost=true \
+-o D:\MyApp\Release\
+```
+
 ## 💪 Contributors
 
 |                                             Shiloh                                              |
