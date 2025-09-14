@@ -36,7 +36,22 @@ Just enjoy it:)
 | Microsoft.Extensions.DependencyInjection | 10.0.0-preview.5.25277.114 | <https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/> |                                                                                                                                      |
 |       Microsoft.Extensions.Hosting       | 10.0.0-preview.5.25277.114 |       <https://www.nuget.org/packages/Microsoft.Extensions.Hosting>        |                                                                                                                                      |
 |             System Reactive              |           6.0.1            |                    <https://github.com/dotnet/reactive>                    |                                                         For throttling only                                                          |
-|        Svg.Controls.Skia.Avalonia        |          11.3.0.1          |                <https://github.com/wieslawsoltes/Svg.Skia>                 | All svg icons are from iconify, see <https://icon-sets.iconify.design/material-symbols/> and <https://icon-sets.iconify.design/mdi/> |
+|        Svg.Controls.Skia.Avalonia        |          11.3.0.4          |                <https://github.com/wieslawsoltes/Svg.Skia>                 | All svg icons are from iconify, see <https://icon-sets.iconify.design/material-symbols/> and <https://icon-sets.iconify.design/mdi/> |
+
+## 🔨 Build & Publish
+
+### Windows
+
+```shell
+dotnet publish -c Release \
+-r win-x64 \
+--self-contained true \
+-p:PublishSingleFile=true \
+-p:IncludeNativeLibrariesForSelfExtract=true \
+-p:PublishTrimmed=false \
+-p:UseAppHost=true \
+-o D:\MyApp\Release\
+```
 
 ## 💪 Contributors
 
