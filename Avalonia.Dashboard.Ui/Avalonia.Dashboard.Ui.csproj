@@ -33,20 +33,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <AvaloniaResource Include="Assets\avalonia-logo.ico"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\CloseRounded.svg"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\ComputerRounded.svg"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\DarkModeRounded.svg"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\FullscreenExitRounded.svg"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\FullscreenRounded.svg"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\Home.svg"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\HorizontalRuleRounded.svg"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\InfoRounded.svg"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\LightModeRounded.svg"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\MenuRounded.svg"/>
-        <AvaloniaResource Include="Assets\Icons\MaterialSymbols\SettingsRounded.svg"/>
-        <None Remove="Assets\images\avatar.jpg"/>
-        <AvaloniaResource Include="Assets\Images\avatar.jpg"/>
+        <AvaloniaResource Include="Assets\**\*"/>
     </ItemGroup>
 
     <ItemGroup>
