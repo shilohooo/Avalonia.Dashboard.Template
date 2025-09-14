@@ -1,8 +1,17 @@
 ﻿# TODO
 
+## Added at 2025-09-14
+
+- [ ] Logging
+  - [ ] Console
+  - [ ] File
+
 ## Added at 2025-09-10
 
-- [ ] Desktop deployment configuration for Windows, Linux, MacOS
+- [ ] Desktop deployment configuration
+  - [x] Windows
+  - [ ] Linux (Debian/Ubuntu)
+  - [ ] MacOS
 
 ## Added at 2025-08-09
 
