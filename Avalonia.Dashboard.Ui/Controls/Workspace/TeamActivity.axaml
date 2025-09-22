@@ -1,0 +1,163 @@
+﻿<UserControl
+    x:Class="Avalonia.Dashboard.Ui.Controls.Workspace.TeamActivity"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Avalonia.Dashboard.Ui.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm-Workspace="clr-namespace:Avalonia.Dashboard.Ui.ViewModels.Workspace"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm-Workspace:TeamActivityViewModel"
+    mc:Ignorable="d"
+    >
+    <Design.DataContext>
+        <vm-Workspace:TeamActivityViewModel />
+    </Design.DataContext>
+    <Border
+        Padding="12"
+        Background="{DynamicResource WorkspacePageContentBgColor}"
+        CornerRadius="8"
+        >
+        <DockPanel LastChildFill="True">
+            <!--  Title  -->
+            <StackPanel
+                Margin="12,0"
+                DockPanel.Dock="Top"
+                Orientation="Horizontal"
+                Spacing="12"
+                >
+                <controls:SvgIcon
+                    VerticalAlignment="Center"
+                    IconColor="{DynamicResource PrimaryColor}"
+                    IconHeight="20"
+                    IconName="GroupsRounded"
+                    IconWidth="20"
+                    />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Text="Team Activities"
+                    />
+            </StackPanel>
+
+            <!--  Activities  -->
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                <ListBox
+                    Margin="8,12"
+                    Background="Transparent"
+                    ItemsSource="{Binding ActivityLogs}"
+                    >
+                    <ListBox.Styles>
+                        <Style Selector="ListBoxItem">
+                            <Setter Property="Background" Value="{DynamicResource ContentBgColor}" />
+                            <Setter Property="Margin" Value="0 0 0 12" />
+                            <Setter Property="CornerRadius" Value="8" />
+                        </Style>
+                        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+                            <Setter Property="Background" Value="{DynamicResource ContentBgColor}" />
+                        </Style>
+                    </ListBox.Styles>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="8">
+                                <Grid
+                                    ColumnDefinitions="*"
+                                    RowDefinitions="Auto, Auto, Auto, *, Auto"
+                                    RowSpacing="8"
+                                    >
+                                    <!--  User Info  -->
+                                    <StackPanel
+                                        Grid.Row="0"
+                                        Orientation="Horizontal"
+                                        Spacing="12"
+                                        >
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            FontSize="16"
+                                            FontWeight="Bold"
+                                            Text="{Binding UserName}"
+                                            />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            Foreground="{DynamicResource TextSecondaryColor}"
+                                            Text="{Binding Position}"
+                                            />
+                                    </StackPanel>
+
+                                    <!--  Time  -->
+                                    <StackPanel
+                                        Grid.Row="1"
+                                        Orientation="Horizontal"
+                                        Spacing="4"
+                                        >
+
+                                        <controls:SvgIcon
+                                            IconColor="{DynamicResource TextPrimaryColor}"
+                                            IconName="TimerOutline"
+                                            IconWidth="14"
+                                            />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource TextPrimaryColor}"
+                                            Text="{Binding CreateTime, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}"
+                                            />
+                                    </StackPanel>
+
+                                    <!--  Title  -->
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                        Foreground="{DynamicResource PrimaryColor}"
+                                        Text="{Binding Title}"
+                                        />
+
+                                    <!--  Content  -->
+                                    <Border
+                                        Grid.Row="3"
+                                        Padding="12"
+                                        Background="{DynamicResource WorkspacePageContentBgColor}"
+                                        CornerRadius="4"
+                                        >
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            Foreground="{DynamicResource TextPrimaryColor}"
+                                            Text="{Binding Content}"
+                                            TextWrapping="WrapWithOverflow"
+                                            />
+                                    </Border>
+
+                                    <!--  Comment  -->
+                                    <StackPanel
+                                        Grid.Row="4"
+                                        Orientation="Horizontal"
+                                        Spacing="8"
+                                        >
+                                        <controls:SvgIcon
+                                            IconColor="{DynamicResource WarningColor}"
+                                            IconHeight="20"
+                                            IconName="MoodRounded"
+                                            IconWidth="20"
+                                            ToolTip.Tip="Emoji"
+                                            />
+                                        <controls:SvgIcon
+                                            IconColor="{DynamicResource ErrorColor}"
+                                            IconHeight="20"
+                                            IconName="ThumbUpRounded"
+                                            IconWidth="20"
+                                            ToolTip.Tip="Like"
+                                            />
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </DockPanel>
+    </Border>
+</UserControl>

@@ -23,7 +23,7 @@
   - [x] User profile
   - [x] Todo list
   - [ ] Calendar - I haven't found a good calendar component yet:(
-  - [ ] Team activity
+  - [x] Team activity
 
 ## Added at 2025-07-11
 

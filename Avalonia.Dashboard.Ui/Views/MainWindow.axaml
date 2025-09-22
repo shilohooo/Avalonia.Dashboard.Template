@@ -59,7 +59,7 @@
 
                 <!--  region Page Content  -->
                 <Border Padding="12" Background="{DynamicResource ContentBgColor}">
-                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
                         <TransitioningContentControl Content="{Binding CurrentPage}" />
                     </ScrollViewer>
                 </Border>

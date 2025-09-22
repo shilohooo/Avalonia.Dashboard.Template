@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Globalization;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Avalonia.Dashboard.Common.Helpers;
@@ -12,7 +13,7 @@ public static class JsonHelper
     {
         PropertyNameCaseInsensitive = true,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        Converters = { new JsonStringEnumConverter() }
+        Converters = { new JsonStringEnumConverter(), new JsonDateTimeOffsetConverter() }
     };
 
     /// <summary>
@@ -24,5 +25,47 @@ public static class JsonHelper
     public static T? Deserialize<T>(string jsonStr)
     {
         return JsonSerializer.Deserialize<T>(jsonStr, DefaultSerializerOptions);
+    }
+}
+
+/// <summary>
+///     Custom DateTimeOffset converter
+/// </summary>
+public sealed class JsonDateTimeOffsetConverter(string format = JsonDateTimeOffsetConverter.DefaultFormat)
+    : JsonConverter<DateTimeOffset>
+{
+    /// <summary>
+    ///     Default format
+    /// </summary>
+    private const string DefaultFormat = "yyyy-MM-dd HH:mm:ss";
+
+    /// <summary>
+    ///     Format
+    /// </summary>
+    private readonly string _format = format;
+
+    /// <inheritdoc />
+    public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.String)
+            throw new JsonException($"Unexpected token type. Expected {JsonTokenType.String}, got {reader.TokenType}");
+
+        return DateTimeOffset.TryParseExact(
+            reader.GetString(),
+            _format,
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.None,
+            out var result
+        )
+            ? result
+            : throw new JsonException(
+                $"Unable to parse date time offset with format {_format} from {reader.GetString()}");
+    }
+
+
+    /// <inheritdoc />
+    public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value.ToString(_format));
     }
 }
