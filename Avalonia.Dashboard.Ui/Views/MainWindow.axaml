@@ -59,9 +59,7 @@
 
                 <!--  region Page Content  -->
                 <Border Padding="12" Background="{DynamicResource ContentBgColor}">
-                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
-                        <TransitioningContentControl Content="{Binding CurrentPage}" />
-                    </ScrollViewer>
+                    <TransitioningContentControl MaxHeight="1000" Content="{Binding CurrentPage}" />
                 </Border>
                 <!--  endregion  -->
             </SplitView>
