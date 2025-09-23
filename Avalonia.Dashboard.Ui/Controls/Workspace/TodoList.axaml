@@ -90,6 +90,7 @@
                 Background="Transparent"
                 DockPanel.Dock="Top"
                 ItemsSource="{Binding TodoItems}"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden"
                 >
                 <ListBox.Styles>
                     <Style Selector="ListBoxItem">
