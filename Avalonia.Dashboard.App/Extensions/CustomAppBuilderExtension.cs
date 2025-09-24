@@ -15,14 +15,11 @@ namespace Avalonia.Dashboard.App.Extensions;
 /// </summary>
 public static class CustomAppBuilderExtension
 {
-    private const string LogPattern =
-        "{Timestamp:yyyy-MM-dd HH:mm:ss} {Level,-5} [{SourceContext,-20}] - {Message:lj}{NewLine}{Exception}";
-    
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaAppWithDi()
     {
         var host = Host.CreateDefaultBuilder()
-            .ConfigureServices(services =>
+            .ConfigureServices((context, services) =>
             {
                 services.AddAppConfiguration();
 
@@ -30,16 +27,20 @@ public static class CustomAppBuilderExtension
                 {
                     builder.ClearProviders();
 
-                    var logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs", "App-.log");
+                    // var logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                    //     context.Configuration["Logging.Dir"]!, context.Configuration["Logging.FileName"]!);
                     Log.Logger = new LoggerConfiguration()
-                        .MinimumLevel.Debug()
-                        .WriteTo.Console(outputTemplate: LogPattern)
-                        .WriteTo.File(
-                            logPath,
-                            rollingInterval: RollingInterval.Day,
-                            retainedFileCountLimit: 7,
-                            outputTemplate: LogPattern
-                        )
+                        .ReadFrom.Configuration(context.Configuration)
+                        // .Enrich.WithThreadId()
+                        // .Enrich.WithThreadName()
+                        // .MinimumLevel.Debug()
+                        // .WriteTo.Console(outputTemplate: context.Configuration["Logging.OutputTemplate"]!)
+                        // .WriteTo.File(
+                        //     logPath,
+                        //     rollingInterval: RollingInterval.Day,
+                        //     retainedFileCountLimit: 7,
+                        //     outputTemplate: context.Configuration["Logging.OutputTemplate"]!
+                        // )
                         .CreateLogger();
                     builder.AddSerilog();
                 });
@@ -52,6 +53,7 @@ public static class CustomAppBuilderExtension
                 services.AddViews();
             })
             .Build();
+
         ServiceLocator.Host = host;
 
         return AppBuilder.Configure<App>()

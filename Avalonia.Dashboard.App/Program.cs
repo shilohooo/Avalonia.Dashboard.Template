@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Avalonia.Dashboard.App.Extensions;
 
 namespace Avalonia.Dashboard.App;
@@ -11,6 +12,8 @@ internal static class Program
     [STAThread]
     public static void Main(string[] args)
     {
+        Thread.CurrentThread.Name ??= "MainThread";
+
         BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
     }
