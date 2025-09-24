@@ -74,7 +74,6 @@ public partial class AppMenuViewModel : RecipientViewModelBase, IRecipient<SubMe
 
     private void OnSearch(string newVal)
     {
-        Debug.WriteLine($"search val changed: {newVal}");
         var filteredMenus = string.IsNullOrWhiteSpace(newVal)
             ? MenuSources
             : MenuSources.Where(menu => menu.Title.Contains(newVal, StringComparison.OrdinalIgnoreCase));

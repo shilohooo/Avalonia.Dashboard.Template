@@ -12,7 +12,6 @@ public class EqualToBooleanConverter : IValueConverter
     /// <inheritdoc />
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        Debug.WriteLine($"EqualToBooleanConverter.Convert - Value: {value}, Param: {parameter}");
         if (value is null)
         {
             return parameter is null;

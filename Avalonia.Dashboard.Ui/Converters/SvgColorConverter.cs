@@ -13,8 +13,6 @@ public class SvgColorConverter : IValueConverter
     /// <inheritdoc />
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        Debug.WriteLine($"SvgColorConverter.Convert - {value}, {targetType}, {parameter}, {culture}");
-        Debug.WriteLine($"SvgColorConverter.Convert Value Type - {value?.GetType()}");
         return value switch
         {
             SolidColorBrush colorBrush =>

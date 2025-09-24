@@ -2,9 +2,9 @@
 
 ## Added at 2025-09-14
 
-- [ ] Logging
-  - [ ] Console
-  - [ ] File
+- [x] Logging
+  - [x] Console
+  - [x] File
 
 ## Added at 2025-09-10
 

@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Dashboard.Ui.ViewModels;
 using Avalonia.Input;
+using Microsoft.Extensions.Logging;
 
 namespace Avalonia.Dashboard.Ui.Views;
 
@@ -10,11 +11,12 @@ public partial class MainWindow : Window
     {
     }
 
-    public MainWindow(MainWindowViewModel viewModel)
+    public MainWindow(MainWindowViewModel viewModel, ILogger<MainWindow> logger)
     {
         InitializeComponent();
         DataContext = viewModel;
         PointerPressed += OnPointerPressed;
+        logger.LogInformation("MainWindow created");
     }
 
     /// <summary>

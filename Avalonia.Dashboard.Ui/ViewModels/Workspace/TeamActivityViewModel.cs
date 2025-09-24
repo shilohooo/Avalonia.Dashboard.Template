@@ -24,7 +24,6 @@ public class TeamActivityViewModel : ViewModelBase
     public TeamActivityViewModel(IActivityLogService activityLogService)
     {
         ActivityLogs = activityLogService.GetActivityLogsAsync();
-        Debug.WriteLine($"init activity logs: {ActivityLogs.Count}");
     }
 
     #endregion

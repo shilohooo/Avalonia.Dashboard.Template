@@ -42,7 +42,6 @@ public class App : Application
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
-            Debug.WriteLine("Getting MainWindow");
             var mainWindow = ServiceLocator.GetRequiredService<MainWindow>();
             desktop.MainWindow = mainWindow;
 
