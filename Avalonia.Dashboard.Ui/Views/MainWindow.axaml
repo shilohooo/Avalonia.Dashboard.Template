@@ -18,10 +18,10 @@
     CanResize="True"
     DragDrop.AllowDrop="True"
     ExtendClientAreaChromeHints="NoChrome"
-    ExtendClientAreaTitleBarHeightHint="-1"
+    ExtendClientAreaTitleBarHeightHint="0"
     ExtendClientAreaToDecorationsHint="True"
     Icon="avares://Avalonia.Dashboard.Ui/Assets/avalonia-logo.ico"
-    SystemDecorations="Full"
+    SystemDecorations="BorderOnly"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d"
     >
