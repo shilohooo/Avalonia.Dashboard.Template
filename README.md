@@ -23,7 +23,6 @@ Just enjoy it:)
 
 ## 🪲 Known BUGs
 
-- [ ] Can not hide title bar on Linux platform, such as Ubuntu.
 - [ ] i18n not working on Linux platform, such as Ubuntu.
 
 ## 📸 Screenshots
