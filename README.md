@@ -71,6 +71,9 @@ dotnet publish -c Release \
 -r linux-x64 \
 --self-contained true \
 -p:PublishSingleFile=true \
+# The following flag can fixes i18n bug on linux-x64, but it led to another bug: appsettings.json file not include in publish dir
+# When publishing a single file, we must exclude the appsettings file and copy it to the publish directory 
+-p:IncludeAllContentForSelfExtract=true
 -p:IncludeNativeLibrariesForSelfExtract=true \
 -p:PublishTrimmed=false \
 -p:UseAppHost=true \
