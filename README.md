@@ -21,10 +21,6 @@ Just enjoy it:)
     - [x] en-US
     - [x] zh-CN
 
-## 🪲 Known BUGs
-
-- [ ] i18n not working on Linux platform, such as Ubuntu.
-
 ## 📸 Screenshots
 
 ![Demo](./Screenshots/Avalonia.Dashboard.Template.gif)
