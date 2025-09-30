@@ -62,6 +62,7 @@
     </ItemGroup>
 
 
+    <!--    if set the ExcludeFromSingleFile flag to true, the config file will output to publish dir-->
     <ItemGroup>
         <None Update="appsettings.json" ExcludeFromSingleFile="true">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>

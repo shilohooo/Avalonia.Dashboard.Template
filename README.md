@@ -53,6 +53,12 @@ Just enjoy it:)
 ### Windows
 
 ```shell
+# set single executable file's extract directory of dll and resources before it start
+$env:DOTNET_BUNDLE_EXTRACT_BASE_DIR="$env:LOCALAPPDATAC:\dotnet-apps\"
+```
+
+```shell
+#  build
 dotnet publish -c Release \
 -r win-x64 \
 --self-contained true \
@@ -66,13 +72,16 @@ dotnet publish -c Release \
 ### Linux
 
 ```shell
+# set single executable file's extract directory of dll and resources before it start
+export DOTNET_BUNDLE_EXTRACT_BASE_DIR="$HOME/dotnet-apps/
+```
+
+```shell
+# build
 dotnet publish -c Release \
-# -r linux-armx64
 -r linux-x64 \
 --self-contained true \
 -p:PublishSingleFile=true \
-# The following flag can fixes i18n bug on linux-x64, but it led to another bug: appsettings.json file not include in publish dir
-# When publishing a single file, we must exclude the appsettings file and copy it to the publish directory 
 -p:IncludeAllContentForSelfExtract=true
 -p:IncludeNativeLibrariesForSelfExtract=true \
 -p:PublishTrimmed=false \

@@ -1,4 +1,6 @@
-﻿using Avalonia.Dashboard.Common.Constants;
+﻿using System;
+using System.IO;
+using Avalonia.Dashboard.Common.Constants;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,6 +19,7 @@ public static class ServiceCollectionExtension
     public static void AddAppConfiguration(this IServiceCollection serviceCollection)
     {
         IConfiguration config = new ConfigurationBuilder()
+            .SetBasePath(Path.GetDirectoryName(Environment.ProcessPath)!)
             .AddJsonFile(GlobalConstants.AppSettingsFilename)
             .Build();
         serviceCollection.AddSingleton(config);
