@@ -73,7 +73,7 @@ export DOTNET_BUNDLE_EXTRACT_BASE_DIR="$HOME/dotnet-apps/
 ```
 
 ```shell
-# build
+# buisld
 dotnet publish -c Release \
 -r linux-x64 \
 --self-contained true \
@@ -82,7 +82,26 @@ dotnet publish -c Release \
 -p:IncludeNativeLibrariesForSelfExtract=true \
 -p:PublishTrimmed=false \
 -p:UseAppHost=true \
--o D:\MyApp\Release\
+```
+
+### MacOS
+
+```shell
+# set single executable file's extract directory of dll and resources before it start
+export DOTNET_BUNDLE_EXTRACT_BASE_DIR="$HOME/dotnet-apps/
+```
+
+```shell
+# buisld
+dotnet publish -c Release \
+# -r osx-x64
+-r osx-arm64 \
+--self-contained true \
+-p:PublishSingleFile=true \
+-p:IncludeAllContentForSelfExtract=true
+-p:IncludeNativeLibrariesForSelfExtract=true \
+-p:PublishTrimmed=false \
+-p:UseAppHost=true \
 ```
 
 ## 💪 Contributors
