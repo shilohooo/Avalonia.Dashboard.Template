@@ -8,10 +8,10 @@
 
 ## Added at 2025-09-10
 
-- [ ] Desktop deployment configuration
+- [x] Desktop deployment configuration
   - [x] Windows
   - [x] Linux (Debian/Ubuntu)
-  - [ ] MacOS
+  - [x] MacOS
 
 ## Added at 2025-08-09
 
