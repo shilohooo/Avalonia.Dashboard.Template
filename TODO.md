@@ -1,5 +1,9 @@
 ﻿# TODO
 
+## Added at 2026-01-05
+
+- [ ] AOT support
+
 ## Added at 2025-09-14
 
 - [x] Logging
