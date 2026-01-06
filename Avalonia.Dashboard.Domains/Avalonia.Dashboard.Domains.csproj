@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Avalonia.Dashboard.Common\Avalonia.Dashboard.Common.csproj" />
+    </ItemGroup>
+
 </Project>

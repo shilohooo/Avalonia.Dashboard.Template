@@ -1,5 +1,6 @@
-﻿using Avalonia.Dashboard.Abstractions.Services;
-using Avalonia.Dashboard.Common.Helpers;
+﻿using System.Text.Json;
+using Avalonia.Dashboard.Abstractions.Services;
+using Avalonia.Dashboard.Domains;
 using Avalonia.Dashboard.Domains.Models;
 
 namespace Avalonia.Dashboard.Services;
@@ -14,6 +15,7 @@ public class MenuService : IMenuService
     {
         var menuJsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs", "menus.json");
         var menusJsonStr = File.ReadAllText(menuJsonFilePath);
-        return JsonHelper.Deserialize<List<MenuItem>>(menusJsonStr) ?? [];
+        return JsonSerializer.Deserialize<List<MenuItem>>(menusJsonStr,
+            AppJsonSerializerContext.Default.ListMenuItem) ?? [];
     }
 }

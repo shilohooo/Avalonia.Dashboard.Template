@@ -5,7 +5,7 @@
     "position": "Project Manager",
     "title": "Sprint Planning Session",
     "content": "Kicked off Sprint 12 with the team, defining key deliverables for the new authentication module.",
-    "createTime": "2025-09-19 09:00:00"
+    "createTime": "2025-09-19 09:00:00.123+08:00"
   },
   {
     "id": "3c9a1d7e-2b4f-4a8c-b5e6-7f1d3a9c2e8b",
@@ -13,7 +13,7 @@
     "position": "Team Lead",
     "title": "Code Review Completed",
     "content": "Conducted a thorough code review for the payment processing feature, ensuring compliance with security standards.",
-    "createTime": "2025-09-19 14:30:00"
+    "createTime": "2025-09-19 14:30:00.456+08:00"
   },
   {
     "id": "6b2e4f8a-1d3c-4b9e-a7c5-2e9f1d6a3c7b",
@@ -21,7 +21,7 @@
     "position": "Developer",
     "title": "API Integration",
     "content": "Successfully integrated third-party payment API into the backend, improving transaction efficiency.",
-    "createTime": "2025-09-19 10:00:00"
+    "createTime": "2025-09-19 10:00:00.789+08:00"
   },
   {
     "id": "9a3c2f7e-4b1d-4e9a-b8c6-1f7d3e2a9c5b",
@@ -29,7 +29,7 @@
     "position": "Marketing Specialist",
     "title": "Beta Launch Announcement",
     "content": "Prepared and shared the announcement for the beta release of our new project management tool.",
-    "createTime": "2025-09-19 18:00:00"
+    "createTime": "2025-09-19 18:00:00.987+08:00"
   },
   {
     "id": "2e7b1d9a-3c4f-4a8b-b5e6-9f1c2d7e3a6c",
@@ -37,6 +37,6 @@
     "position": "UX Designer",
     "title": "UI Prototype Review",
     "content": "Presented the updated UI prototypes for the dashboard, incorporating feedback from user testing sessions.",
-    "createTime": "2025-09-19 11:00:00"
+    "createTime": "2025-09-19 11:00:00.654+08:00"
   }
 ]

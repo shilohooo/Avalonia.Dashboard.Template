@@ -1,5 +1,6 @@
-﻿using Avalonia.Dashboard.Abstractions.Services;
-using Avalonia.Dashboard.Common.Helpers;
+﻿using System.Text.Json;
+using Avalonia.Dashboard.Abstractions.Services;
+using Avalonia.Dashboard.Domains;
 using Avalonia.Dashboard.Domains.Models;
 
 namespace Avalonia.Dashboard.Services;
@@ -13,6 +14,7 @@ public class ActivityLogService : IActivityLogService
     {
         var jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "activity-logs.json");
         var activityLogsJsonStr = File.ReadAllText(jsonFilePath);
-        return JsonHelper.Deserialize<List<ActivityLog>>(activityLogsJsonStr) ?? [];
+        return JsonSerializer.Deserialize<List<ActivityLog>>(activityLogsJsonStr,
+            AppJsonSerializerContext.Default.ListActivityLog) ?? [];
     }
 }
