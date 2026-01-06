@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Avalonia.Dashboard.App.Extensions;
+using Serilog;
 
 namespace Avalonia.Dashboard.App;
 
@@ -12,10 +13,17 @@ internal static class Program
     [STAThread]
     public static void Main(string[] args)
     {
-        Thread.CurrentThread.Name ??= "MainThread";
+        try
+        {
+            Thread.CurrentThread.Name ??= "MainThread";
 
-        BuildAvaloniaApp()
-            .StartWithClassicDesktopLifetime(args);
+            BuildAvaloniaApp()
+                .StartWithClassicDesktopLifetime(args);
+        }
+        catch (Exception e)
+        {
+            Log.Logger.Error(e, "Unknown error occurs:(");
+        }
     }
 
     // Avalonia configuration, don't remove; also used by visual designer.
